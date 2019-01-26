@@ -1,0 +1,114 @@
+.loader {
+  display: none;
+}
+
+.register-container {
+  width: 100%;
+  min-width: 400px;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  background: url("../images/login-background.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.register-container .form-wrapper {
+  width: 500px;
+  min-width: 400px;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 10;
+  position: relative;
+  flex-direction: column;
+  padding: 70px 50px;
+  position: relative;
+  background-color: #ffffff;
+}
+
+.register-container .form-wrapper .logo {
+  width: 100%;
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.register-container .form-wrapper .logo span {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+  color: #788195;
+}
+
+.register-container .form-wrapper .form-container .name-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.register-container .form-wrapper .form-container .name-wrapper .input-wrapper {
+  width: 48%;
+}
+
+.register-container .form-wrapper .form-container .input-wrapper {
+  margin-bottom: 15px;
+}
+
+.register-container .form-wrapper .form-container .input-wrapper .input {
+  height: 42px;
+  padding: 6px 10px;
+  width: 100%;
+  cursor: text;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #595959;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #e9e9e9;
+  border-radius: 5px;
+}
+
+.register-container .form-wrapper .form-container .input-wrapper .btn {
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #4482FF;
+  border-color: #4482FF;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  padding: 0 25px;
+  font-size: 14px;
+  border-radius: 4px;
+  height: 36px;
+}
+
+.links-wrapper {
+  border-top: 1px dashed #797979;
+  margin-top: 35px;
+  padding-top: 20px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.links-wrapper a {
+  text-decoration: none;
+  color: #797979;
+}
+
+
+.links-wrapper .forgot {
+  margin-bottom: 10px;
+  font-size: 12px;
+}
