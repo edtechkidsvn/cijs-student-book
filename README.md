@@ -1,7 +1,7 @@
 ## CI JS - Student book
 ### Mục lục
 1. [Introduction](/introduction/introduction.md)
-2. Login + Register UI
+2. [Register UI](/login-register-ui/login-register-ui.md)
 3. Firebase authentication
 4. One-to-one chat UI
 5. Firestore for one-to-one chat
