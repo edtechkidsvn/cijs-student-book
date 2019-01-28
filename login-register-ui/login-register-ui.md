@@ -185,6 +185,7 @@
     - "Form validation" trên server (Server-side validation): Quá trình kiểm tra dữ liệu diễn ra ở máy chủ của nhà cung cấp website. Thông thường việc kiểm tra sẽ được thực hiện nghiêm ngặt trên server trước khi dữ liệu được lưu lại trong cơ sở dữ liệu
 
 4. Thêm phần validation cho Form đăng kí:
+
     ![Form validation](/login-register-ui/form-validation.png)
     - Khi người dùng nhấn nút đăng kí mà 1 trong các trường bị thiếu, chúng tra sẽ hiển thị thông báo tương ứng như hình trên
 
