@@ -26,7 +26,7 @@
       </div>
     ```
     - Thẻ `div.register-container` sẽ chứa toàn bộ nội dung của màn hình đăng nhập. Đây cũng sẽ là nơi chúng ta đặt `background-image`
-  - Thẻ `div.form-wrapper` sẽ là phần nội dung chính, chứa Logo + Form đăng kí. Phần này sẽ luôn  nằm phía bên tay phải màn hình
+    - Thẻ `div.form-wrapper` sẽ là phần nội dung chính, chứa Logo + Form đăng kí. Phần này sẽ luôn  nằm phía bên tay phải màn hình
 
 3. Bên trong file `register.css`, thêm style cho thẻ `div.register-container` như sau:
     ```css
@@ -85,15 +85,19 @@
           <input class='input' type="text" name="lastName" placeholder="Last name" />
         </div>
       </div>
+
       <div class='input-wrapper'>
         <input class='input' type="email" name="email" placeholder="Email" />
       </div>
+
       <div class='input-wrapper'>
         <input class='input' type="password" name="password" placeholder="Password" />
       </div>
+
       <div class='input-wrapper'>
         <input class='input' type="password" name="confirmPassword" placeholder="Confirm password" />
       </div>
+
       <div class='input-wrapper register-footer'>
         <a id='login-button'>Already have an account? Login</a>
         <button class='btn' type='submit'>
@@ -101,7 +105,7 @@
         </button>
       </div>
     ```
-    - Ở đây, chúng ta muốn tất cả các ô input sẽ có style giống nhau và có thể tái sử dụng ở nhiều màn hình khác nhau, vì vậy các thẻ input đều có class là .input và được đặt trong 1 thẻ div.input-wrapper. Tương tự với class .btn
+    - Ở đây, chúng ta muốn tất cả các ô input sẽ có style giống nhau và có thể tái sử dụng ở nhiều màn hình khác nhau, vì vậy các thẻ input đều có class là `.input` và được đặt trong 1 thẻ `div.input-wrapper`. Tương tự với class `.btn`
 
 8. Thêm phần style cho class `.input`, class `.input-wrapper` và class `.btn` bên trong file `style.css` như sau (file `style.css` sẽ chứa các style dùng đi dùng lại ở nhiều màn hình khác nhau):
     ```css
@@ -174,7 +178,7 @@
 
 2. Tại sao cần "Form validation" ?
     - Bảo vệ website của bạn khỏi thông tin không chính xác hoặc thậm chí là các biện pháp tấn công từ hackers
-    - Tránh việc dữ liệu không thống nhất giữa các người dùng khác nhau
+    - Tránh việc dữ liệu không thống nhất giữa các người dùng
 
 3. Các loại "Form validation"
     - "Form validation" trên trình duyệt (Client-side validation): Quá trình kiểm tra dữ liệu diễn ra ngay trên trình duyệt. Nếu dữ liệu không đúng hoặc bị thiếu, sẽ có thông báo tương ứng cho người dùng => Tăng trải nghiệm người dùng. Tuy nhiên việc kiểm tra dữ liệu trên trình duyệt có thể dễ dàng bị vượt qua
@@ -184,7 +188,7 @@
     ![Form validation](/login-register-ui/form-validation.png)
     - Khi người dùng nhấn nút đăng kí mà 1 trong các trường bị thiếu, chúng tra sẽ hiển thị thông báo tương ứng như hình trên
 
-5. Đầu tiên, ta sẽ cần 1 thẻ `div` để hiển thị thông báo nằm ngay dưới mỗi ô input. Ban đầu, các thẻ div này sẽ không có nội dung gì. Khi người dùn nhấn nút "Register", chúng ta sẽ kiểm tra nội dung của mỗi ô `input` và hiển thị thông báo nếu thông tin bị thiếu. Trong file `register.html`, bên trong mỗi thẻ `div.input-wrapper`, thêm thẻ `div.error` ngay bên dưới thẻ input như sau:
+5. Đầu tiên, ta sẽ cần 1 thẻ `div` để hiển thị thông báo nằm ngay dưới mỗi ô input. Ban đầu, các thẻ div này sẽ không có nội dung gì. Khi người dùng nhấn nút "Register", chúng ta sẽ kiểm tra nội dung của mỗi ô `input` và hiển thị thông báo nếu thông tin bị thiếu. Trong file `register.html`, bên trong mỗi thẻ `div.input-wrapper`, thêm thẻ `div.error` ngay bên dưới thẻ input như sau:
     ```html
       <div class='name-wrapper'>
         <div class='input-wrapper'>
@@ -196,20 +200,22 @@
           <div id='lastName-error' class='error'></div>
         </div>
       </div>
+
       <div class='input-wrapper'>
         <input class='input' type="email" name="email" placeholder="Email" />
         <div id='email-error' class='error'></div>
       </div>
+
       <div class='input-wrapper'>
         <input class='input' type="password" name="password" placeholder="Password" />
         <div id='password-error' class='error'></div>
       </div>
+
       <div class='input-wrapper'>
         <input class='input' type="password" name="confirmPassword" placeholder="Confirm password" />
         <div id='confirmPassword-error' class='error'></div>
       </div>
-      <div id='form-error' class='form-error'></div>
-      <div id='form-success' class='success'></div>
+
       <div class='input-wrapper space-between'>
         <a id='loggin-button'>Already have an account? Login</a>
         <button class='btn' type='submit'>
@@ -226,12 +232,14 @@
         color: #f5222d;
       }
     ```
-7. Lắng nghe sự kiện `submit` của Form để lấy
-    - Khi ta click `<button type='submit'>` nằm bên trong 1 form thì sự kiện `submit` sẽ được kích hoạt. Để lắng nghe sự kiện này ta sẽ sử dụng hàm `addEventListener()` của form element. Bên trong file `view.js` thêm đoạn code như sau:
+7. Lắng nghe sự kiện `submit` của Form để lấy dữ liệu
+    - Khi ta click `<button type='submit'>` nằm bên trong 1 `<form>` thì sự kiện `submit` sẽ được kích hoạt. Để lắng nghe sự kiện này ta sẽ sử dụng hàm `addEventListener()` của form element. Bên trong file `view.js` thêm đoạn code như sau:
         ```js
           const registerForm = document.getElementById('register-form');
+
           registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
             const registerInfo = {
               firstName: registerForm.firstName.value,
               lastName: registerForm.lastName.value,
@@ -268,21 +276,25 @@
             } else {
               document.getElementById('firstName-error').innerText = '';
             }
+
             if (!registerInfo.lastName) {
               document.getElementById('lastName-error').innerText = 'Please input your last name';
             } else {
               document.getElementById('lastName-error').innerText = '';
             }
+
             if (!registerInfo.email) {
               document.getElementById('email-error').innerText = 'Please input your email';
             } else {
               document.getElementById('email-error').innerText = '';
             }
+
             if (!registerInfo.password) {
               document.getElementById('password-error').innerText = 'Please input your password';
             } else {
               document.getElementById('password-error').innerText = '';
             }
+
             if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
               document.getElementById('confirmPassword-error').innerText = 'Confirm password didnt match';
             } else {
@@ -290,8 +302,8 @@
             }
           };
         ```
-    - Chú ý trường hợp `registerInfo.confirmPassword`, với trường hợp này chúng ta phải kiểm tra 2 điêu kiện là `confirmPassword` có hay không và nếu có thì `confirmPassword` có bằng với `password` hay không
-    - Nhận thấy ở đây, việc sử dụng hàm `getElementById().innerText` được lặp lại khá nhiều, thêm nữa công việc thay đổi giao diện người dùng là nhiệm vụ của view (mô hình MVC), vì vậy chúng ta sẽ viết 1 hàm `setMessage` trong file `view.js` để sử dụng cho tất cả các trường hợp:
+    - Chú ý trường hợp `registerInfo.confirmPassword`, với trường hợp này chúng ta phải kiểm tra 2 điều kiện là `confirmPassword` có hay không và nếu có thì `confirmPassword` có bằng với `password` hay không
+    - Nhận thấy ở đây, việc sử dụng hàm `getElementById().innerText` được lặp lại khá nhiều, thêm nữa công việc thay đổi giao diện người dùng là nhiệm vụ của "View" (mô hình MVC), vì vậy chúng ta sẽ viết 1 hàm `setMessage` trong file `view.js` để sử dụng cho tất cả các trường hợp:
         ```js
           view.setMessage = (elementId, message) => {
             document.getElementById(elementId).innerText = message;
@@ -306,21 +318,25 @@
             } else {
               view.setMessage('firstName-error', '');
             }
+
             if (!registerInfo.lastName) {
               view.setMessage('lastName-error', 'Please input your last name');
             } else {
               view.setMessage('lastName-error', '');
             }
+
             if (!registerInfo.email) {
               view.setMessage('email-error', 'Please input your email');
             } else {
               view.setMessage('email-error', '');
             }
+
             if (!registerInfo.password) {
               view.setMessage('password-error', 'Please input your password');
             } else {
               view.setMessage('password-error', '');
             }
+
             if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
               view.setMessage('confirmPassword-error', 'Confirm password didnt match');
             } else {
@@ -358,18 +374,22 @@
                     <div id='lastName-error' class='error'></div>
                   </div>
                 </div>
+
                 <div class='input-wrapper'>
                   <input class='input' type="email" name="email" placeholder="Email" />
                   <div id='email-error' class='error'></div>
                 </div>
+
                 <div class='input-wrapper'>
                   <input class='input' type="password" name="password" placeholder="Password" />
                   <div id='password-error' class='error'></div>
                 </div>
+
                 <div class='input-wrapper'>
                   <input class='input' type="password" name="confirmPassword" placeholder="Confirm password" />
                   <div id='confirmPassword-error' class='error'></div>
                 </div>
+
                 <div class='input-wrapper register-footer'>
                   <a id='loggin-button'>Already have an account? Login</a>
                   <button class='btn' type='submit'>
@@ -392,6 +412,7 @@
             // mount login screen
             document.getElementById('app').innerHTML = components.login;
             break;
+
           case 'register':
             // mount register screen
             document.getElementById('app').innerHTML = components.register;
@@ -407,6 +428,7 @@
             // mount login screen
             document.getElementById('app').innerHTML = components.login;
             break;
+
           case 'register':
             // mount register screen
             document.getElementById('app').innerHTML = components.register;
@@ -430,8 +452,8 @@
             break;
       };
     ```
-    - Chúng ra sẽ chuyển phần code "lắng nghe" from submit từ bên ngoài vào bên trong hàm `setActiveScreen()`. Ngoài ra, khi có sự kiện `click` vào dòng chữ `Already have an account? Login`, chúng ra sẽ chuyển sang màn hình "Đăng nhập"
-    - **Bài tập:** Thêm phần code "lắng nghe" các sự kiện của trang "Đăng kí" vào nhánh `login` trong câu lệnh switch của hàm `setActiveScreen()`
+    - Chúng ra sẽ chuyển phần code "lắng nghe" form submit ở phần III vào bên trong hàm `setActiveScreen()`. Ngoài ra, khi có sự kiện `click` vào dòng chữ `Already have an account? Login`, chúng ra sẽ chuyển sang màn hình "Đăng nhập"
+    - **Bài tập:** Thêm phần code "lắng nghe" các sự kiện của trang "Đăng kí" vào nhánh `login` trong câu lệnh `switch` của hàm `setActiveScreen()`
 
 - Mở file `index.js`, đây chính là file đầu vào của ứng dụng, tại đây chúng ra sẽ khởi tạo màn hình đầu tiên là màn hình "đăng kí" như sau:
     ```js
@@ -439,7 +461,7 @@
         view.setActiveScreen('register');
       }
     ```
-*Nội dung của các files sau bài này: [Login + Register UI Code](login-register-ui/example)*
+*Nội dung của các files sau bài này: [Login + Register UI Code](login-register-ui/example/README.md)*
 
 *Bài tiếp theo: [Firebase Authentication]*
 
