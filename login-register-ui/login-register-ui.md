@@ -462,7 +462,7 @@
         view.setActiveScreen('register');
       }
     ```
-*Nội dung của các files sau bài này: [Login + Register UI Code](login-register-ui/example/README.md)*
+*Nội dung của các files sau bài này: [Login + Register UI Code](example/README.md)*
 
 *Bài tiếp theo: [Firebase Authentication]*
 
