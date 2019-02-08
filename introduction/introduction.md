@@ -88,10 +88,11 @@
 1. Trong phần này chúng ta sẽ tạo các folders + files theo mô hình MVC. Các folders + files này sẽ là bộ khung chính cho ứng dụng chat bao gồm:
     - 1 folder để chứa toàn bộ project
     - 4 folders con `css`, `html`, `js`, `images` để chứa các files tương ứng
-    - File `index.html`. Đây sẽ là file `html` duy nhất cho cả ứng dụng (SPA)
     - File `style.css`. Đây là file `css` global của project. Các style được dùng đi dùng lại ở nhiều screen khác nhau sẽ nằm ở đây
     - 3 files `model.js`, `view.js`, `controller.js` tương ứng với 3 thành phần của mô hình MVC
+    - File `components.js`. Đây sẽ là nơi chứa `html` của các screen khác nhau
     - File `index.js`. Đây sẽ là file JS đầu vào của ứng dụng
+    - File `index.html`. Đây sẽ là file `html` duy nhất cho cả ứng dụng (SPA)
 
 2. Tạo 1 folder, đặt tên tùy thích để toàn bộ code của ứng dụng chat
 
@@ -99,32 +100,7 @@
 
     ![Cấu trúc folder](/introduction/folder-structure.png)
 
-4. Tạo file `index.html` bên trong folder `html`. Thêm bộ khung cơ bản cho file `index.html`.
-
-    ```html
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
-            <link rel='stylesheet' type='text/css' href='../css/style.css' />
-            <title>Chat App</title>
-          </head>
-
-          <body>
-          </body>
-        </html>
-    ```
-
-5. Tạo file `style.css` bên trong folder `css`. Link file `style.css` vừa tạo vào file `index.html`:
-
-    ```html
-      <link rel='stylesheet' type='text/css' href='../css/style.css' />
-    ```
-
-6. Bên trong file `style.css`, thêm đoạn code CSS như sau:
+4. Tạo file `style.css` bên trong folder `css`. Bên trong file `style.css`, thêm đoạn code CSS như sau:
 
     ```css
       * {
@@ -137,11 +113,8 @@
       }
     ```
 
-7. Bên trong folder `js`, tạo lần lượt các file `index.js`, `model.js`, `view.js`, `controller.js`. Đây sẽ là các file `js` chính, chứa logic của ứng dụng. (Theo mô hình MVC)
-
-    ![Cấu trúc folder](/introduction/folder-structure-2.png)
-
-    - Bên trong mỗi file `model.js`, `view.js`, `controller.js`. Mỗi file sẽ chứa 1 object, bao gồm các hàm và thuộc tính mà file đó sẽ quản lí (theo mô hình MVC). Lần lượt khởi tạo các biến như sau:
+5. Bên trong folder `js`, tạo lần lượt các file `model.js`, `view.js`, `controller.js`. Đây sẽ là các file `js` chính, chứa logic của ứng dụng. (Theo mô hình MVC)
+    - Bên trong mỗi file `model.js`, `view.js`, `controller.js` sẽ chứa 1 object, bao gồm các hàm và thuộc tính mà file đó sẽ quản lí (theo mô hình MVC). Lần lượt khởi tạo các biến như sau:
 
         ```js
           // model.js
@@ -157,5 +130,56 @@
           // controller.js
           const controller = {};
         ```
+
+6. Tạo file `components.js` trong folder `js`
+
+7. Tạo file `index.js` trong folder `js`. Trong file `index.js`, chúng ta sẽ khởi tạo màn hình "Đăng kí" mỗi khi ứng dụng mở lên:
+
+    ```js
+      window.onload = () => {
+        view.setActiveScreen('register');
+      };
+    ```
+
+- Thêm hàm `setActiveScreen()` vào file `view.js`:
+
+    ```js
+      view.setActiveScreen = (screenName) => {
+        switch (screenName) {
+          case 'register':
+            document.getElementById('app').innerHTML = components.register;
+            break;
+        }
+      };
+    ```
+
+8. Tạo file `index.html` bên trong folder `html`. Thêm bộ khung cơ bản cho file `index.html`.
+
+    ```html
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+            <link rel='stylesheet' type='text/css' href='../css/style.css' />
+            <title>Chat App</title>
+          </head>
+
+          <body>
+            <div id='app'></div>
+
+            <script src="../js/components.js"></script>
+            <script src="../js/model.js"></script>
+            <script src="../js/view.js"></script>
+            <script src="../js/controller.js"></script>
+            <script src="../js/index.js"></script>
+          </body>
+        </html>
+    ```
+
+
+*Nội dung của các files sau bài này: [Introduction Code](example)*
 
 *Bài tiếp theo: [Login + Register UI](login-register-ui/login-register-ui.md)*

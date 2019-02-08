@@ -6,18 +6,18 @@ view.setMessage = (elementId, message) => {
 
 view.setActiveScreen = (screenName) => {
   switch (screenName) {
-    case 'login':
-      // mount login screen
-      document.getElementById('app').innerHTML = components.login;
-      break;
     case 'register':
       // mount register screen
       document.getElementById('app').innerHTML = components.register;
 
-      // add form submit listeners
+      // add register button listeners
+      document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));
+
+      // listen to form submit
       const registerForm = document.getElementById('register-form');
       registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
+
         const registerInfo = {
           firstName: registerForm.firstName.value,
           lastName: registerForm.lastName.value,
@@ -25,11 +25,9 @@ view.setActiveScreen = (screenName) => {
           password: registerForm.password.value,
           confirmPassword: registerForm.confirmPassword.value,
         };
+
         controller.register(registerInfo);
       });
-
-      // add register button listeners
-      document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));
       break;
   }
 };

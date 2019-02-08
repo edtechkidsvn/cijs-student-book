@@ -44,3 +44,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.register-container .form-wrapper .form-container .register-footer #already-have-account {
+  cursor: pointer;
+}
