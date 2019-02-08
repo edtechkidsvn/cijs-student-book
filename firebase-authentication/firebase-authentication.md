@@ -1,7 +1,7 @@
 ## CI JS - Student book
 ### Firebase Authentication
 
-Ở bài trước, ta đã xây dựng phần HTMl cho trang đăng kí. Ở bài này, ta sẽ hoàn thành tính năng đăng kí với 2 phần cuối cùng:
+Ở bài trước, ta đã xây dựng phần HTML cho trang đăng kí. Ở bài này, ta sẽ hoàn thành tính năng đăng kí với 2 phần cuối cùng:
 
     - Sử dụng Firebase để lưu thông tin đăng kí và gửi email xác nhận đến người dùng
     - Cho phép người dùng đăng nhập bằng tài khoản đã đăng kí
