@@ -1,6 +1,6 @@
 const view = {};
 
-view.setMessage = (elementId, message) => {
+view.setMessage = (elementId, message = '') => {
   document.getElementById(elementId).innerText = message;
 }
 
@@ -9,7 +9,22 @@ view.setActiveScreen = (screenName) => {
     case 'login':
       // mount login screen
       document.getElementById('app').innerHTML = components.login;
+      
+      // add form submit listeners
+      const loginForm = document.getElementById('login-form');
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const loginInfo = {
+          email: loginForm.email.value,
+          password: loginForm.password.value,
+        };
+        controller.login(loginInfo);
+      });
+
+      // add register button listeners
+      document.getElementById('create-an-account').addEventListener('click', () => view.setActiveScreen('register'));
       break;
+
     case 'register':
       // mount register screen
       document.getElementById('app').innerHTML = components.register;
@@ -29,7 +44,16 @@ view.setActiveScreen = (screenName) => {
       });
 
       // add register button listeners
-      document.getElementById('loggin-button').addEventListener('click', () => view.setActiveScreen('login'));
+      document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));
+      break;
+
+    case 'chat':
+      // mount chat screen
+      document.getElementById('app').innerHTML = `
+        <div>UID: ${model.authUser.uid}</div>
+        <div>Email: ${model.authUser.email}</div>
+        <div>Display Name: ${model.authUser.displayName}</div>
+      `;
       break;
   }
 };

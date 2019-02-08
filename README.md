@@ -2,7 +2,7 @@
 ### Mục lục
 1. [Introduction](/introduction/introduction.md)
 2. [Register UI](/login-register-ui/login-register-ui.md)
-3. Firebase authentication
+3. [Firebase Authentication](/firebase-authentication/firebase-authentication.md)
 4. One-to-one chat UI
 5. Firestore for one-to-one chat
 6. Friend list UI

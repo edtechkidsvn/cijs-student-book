@@ -83,7 +83,9 @@ const components = {
       <div class='main'>
         <div class='conversations' id='conversation-list'>
           <div class='create-conversation'>
-            <button id='create-conversation' class='btn' type='submit'> + New Conversation</button>
+            <button id='create-conversation' class='btn'> + New Conversation</button>
+            <button id='hide-members-list' class='btn hide-members-list'> - Hide Members List</button>
+            <button id='show-members-list' class='btn'> + Show Members List</button>
           </div>
         </div>
 
@@ -149,6 +151,32 @@ const components = {
             <button class='btn' id='cancel-create-conversation'>Cancel</button>
           </div>
         </form>
+      </div>
+    </div>
+  `,
+  echoChat: `
+    <div class='chat-container echo-chat'>
+      <div class='header'>
+        Techkids Chat
+
+        <div class='auth-buttons'>
+          <button id='echo-login-button' class='btn'>Login</button>
+          <button id='echo-register-button' class='btn'>Register</button>
+        </div>
+      </div>
+
+      <div class='main'>
+        <div class='conversation-detail'>
+          <div class='conversation-messages' id='conversation-messages'>
+          </div>
+
+          <form name='message-form' id='message-form'>
+            <div class='conversation-input'>
+              <input id='message-input' name='message' placeholder='Type a message ...'></input>
+              <button class='button' type='submit'>Send</button>
+            </div>
+          <form>
+        </div>
       </div>
     </div>
   `,

@@ -27,7 +27,7 @@ controller.login = (loginInfo) => {
           // remove loader
           view.removeLoader();
 
-          // udpate model
+          // update model
           model.loginSuccess({
             uid: result.user.uid,
             displayName: result.user.displayName,
@@ -72,7 +72,7 @@ controller.register = (registerInfo) => {
     view.removeMessage('password-error');
   }
   if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
-    view.displayMessage('confirmPassword-error', 'Confirm password didnt match');
+    view.displayMessage('confirmPassword-error', `Confirm password didn't match`);
   } else {
     view.removeMessage('confirmPassword-error');
   }
@@ -100,7 +100,7 @@ controller.register = (registerInfo) => {
 };
 
 controller.setView = () => {
-  view.setActiveScreen('login');
+  view.setActiveScreen('echo');
 };
 
 // params newMessage: string

@@ -32,7 +32,7 @@ components.register = `
             <div id='confirmPassword-error' class='error'></div>
           </div>
           <div class='input-wrapper register-footer'>
-            <a id='loggin-button'>Already have an account? Login</a>
+            <a id='already-have-account'>Already have an account? Login</a>
             <button class='btn' type='submit'>
               <span>Register</span>
             </button>

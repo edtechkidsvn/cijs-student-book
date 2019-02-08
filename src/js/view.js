@@ -1,5 +1,7 @@
 const view = {};
 
+view.showMemberList = false;
+
 view.displayLoader = () => {
   const loader = document.getElementById('loader');
   if (loader) {
@@ -17,7 +19,6 @@ view.removeLoader = () => {
 // param: {string} elementId
 // param: {string} message
 view.displayMessage = (elementId, message) => {
-  console.log(message);
   document.getElementById(elementId).innerText = message;
 };
 
@@ -28,8 +29,6 @@ view.removeMessage = (elementId) => {
 
 // param: {string} screenName
 view.setActiveScreen = (screenName) => {
-  console.log(model.unListen);
-
   if (model.unListen) {
     model.unListen();
     model.unListen = undefined;
@@ -98,11 +97,36 @@ view.setActiveScreen = (screenName) => {
       });
       
 
-      // remove noti
+      // remove notification
       document.getElementById('message-input').addEventListener('click', () => view.removeNotification(model.selectedConversation.id));
 
       // handle create conversation button
       document.getElementById('create-conversation').addEventListener('click', () => view.setActiveScreen('createConversation'));
+
+      // show/hide member list
+      if (!view.showMemberList) {
+        document.getElementById('hide-members-list').style.display = 'none';
+        document.getElementById('show-members-list').style.display = 'inline-block';
+        document.getElementById('conversation-members').style.display = 'none';
+        document.querySelector('.main').style.cssText = 'grid-template-columns: 25% 75%;';
+      } else {
+        document.getElementById('show-members-list').style.display = 'none';
+        document.getElementById('hide-members-list').style.display = 'inline-block';
+        document.getElementById('conversation-members').style.display = 'block';
+        document.querySelector('.main').style.cssText = 'grid-template-columns: 25% 50% 25%;';
+      }
+      document.getElementById('hide-members-list').addEventListener('click', () => {
+        document.getElementById('hide-members-list').style.display = 'none';
+        document.getElementById('show-members-list').style.display = 'inline-block';
+        document.getElementById('conversation-members').style.display = 'none';
+        document.querySelector('.main').style.cssText = 'grid-template-columns: 25% 75%;';
+      });
+      document.getElementById('show-members-list').addEventListener('click', () => {
+        document.getElementById('show-members-list').style.display = 'none';
+        document.getElementById('hide-members-list').style.display = 'inline-block';
+        document.getElementById('conversation-members').style.display = 'block';
+        document.querySelector('.main').style.cssText = 'grid-template-columns: 25% 50% 25%;';
+      });
 
       // load conversation
       controller.loadConversations();
@@ -111,7 +135,7 @@ view.setActiveScreen = (screenName) => {
       // mount create conversation screen
       document.getElementById('app').innerHTML = components.createConversation;
 
-      // cancle buttton
+      // cancel button
       document.getElementById('cancel-create-conversation').addEventListener('click', () => view.setActiveScreen('chat'));
 
       // form handle
@@ -126,7 +150,51 @@ view.setActiveScreen = (screenName) => {
         });
       });
       break;
+    
+    case 'echo':
+      // mount echo chat screen
+      document.getElementById('app').innerHTML = components.echoChat;
+
+      // event handle for login/register buttons
+      document.getElementById('echo-login-button').addEventListener('click', () => view.setActiveScreen('login'));
+      document.getElementById('echo-register-button').addEventListener('click', () => view.setActiveScreen('register'));
+
+      // handle chat input
+      const echoMessageForm = document.getElementById('message-form');
+      echoMessageForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newMessage = echoMessageForm.message.value;
+        view.addEchoMessage({
+          content: newMessage,
+          owner: true,
+        });
+        view.addEchoMessage({
+          content: newMessage,
+          owner: false,
+        });
+        echoMessageForm.message.value = '';
+      });
   }
+};
+
+view.addEchoMessage = (echoMessage) => {
+  const message = document.createElement('div');
+  message.classList.add('message');
+  message.innerText = echoMessage.content;
+
+  const messageContainer = document.createElement('div');
+  messageContainer.classList.add('message-container');
+  if (echoMessage.owner) {
+    messageContainer.classList.add('your');
+  } else {
+    const sender = document.createElement('div');
+    sender.classList.add('sender');
+    sender.innerText = 'Echo Bot';
+    messageContainer.appendChild(sender);
+  }
+  messageContainer.appendChild(message);
+
+  document.getElementById('conversation-messages').appendChild(messageContainer);
 };
 
 view.addMessage = (newMessageObj) => {

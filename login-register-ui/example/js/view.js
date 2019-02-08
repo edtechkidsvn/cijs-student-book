@@ -29,7 +29,7 @@ view.setActiveScreen = (screenName) => {
       });
 
       // add register button listeners
-      document.getElementById('loggin-button').addEventListener('click', () => view.setActiveScreen('login'));
+      document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));
       break;
   }
 };

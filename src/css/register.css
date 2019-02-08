@@ -19,12 +19,7 @@
   width: 500px;
   min-width: 400px;
   height: 100%;
-  overflow-y: auto;
-  z-index: 10;
-  position: relative;
-  flex-direction: column;
   padding: 70px 50px;
-  position: relative;
   background-color: #ffffff;
 }
 
@@ -33,13 +28,11 @@
   display: flex;
   margin-bottom: 50px;
   justify-content: center;
-  flex-shrink: 0;
 }
 
 .register-container .form-wrapper .logo span {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 300;
-  line-height: 1;
   color: #788195;
 }
 

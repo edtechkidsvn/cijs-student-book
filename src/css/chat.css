@@ -76,7 +76,7 @@
 
 .conversation-messages {
   flex-grow: 1;
-  overflow: hidden;
+  overflow-y: scroll;
   padding: 12px;
 }
 
@@ -197,4 +197,23 @@
 
 #member-email-error {
   display: inline-block;
+}
+
+.hide-members-list {
+  font-weight: 500;
+  color: #4482FF;
+  background-color: #ffffff;
+  border-color: #4482FF;
+  border: 1px solid #4482FF;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  line-height: 1.5;
+  padding: 0 25px;
+  font-size: 14px;
+  border-radius: 4px;
+  height: 36px;
 }

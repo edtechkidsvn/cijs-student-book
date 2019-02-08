@@ -99,7 +99,7 @@
       </div>
 
       <div class='input-wrapper register-footer'>
-        <a id='login-button'>Already have an account? Login</a>
+        <a id='already-have-account'>Already have an account? Login</a>
         <button class='btn' type='submit'>
           <span>Register</span>
         </button>
@@ -163,6 +163,10 @@
         display: flex;
         justify-content: space-between;
       }
+
+      .register-container .form-wrapper .form-container .register-footer #already-have-account {
+        cursor: pointer;
+      }
     ```
 
 10. Vậy là ta đã có 1 trang html như thiết kế:
@@ -218,7 +222,7 @@
       </div>
 
       <div class='input-wrapper space-between'>
-        <a id='loggin-button'>Already have an account? Login</a>
+        <a id='already-have-account'>Already have an account? Login</a>
         <button class='btn' type='submit'>
           <div id='loader' class='loader'></div>
           <span>Register</span>
@@ -306,7 +310,7 @@
     - Chú ý trường hợp `registerInfo.confirmPassword`, với trường hợp này chúng ta phải kiểm tra 2 điều kiện là `confirmPassword` có hay không và nếu có thì `confirmPassword` có bằng với `password` hay không
     - Nhận thấy ở đây, việc sử dụng hàm `getElementById().innerText` được lặp lại khá nhiều, thêm nữa công việc thay đổi giao diện người dùng là nhiệm vụ của "View" (mô hình MVC), vì vậy chúng ta sẽ viết 1 hàm `setMessage` trong file `view.js` để sử dụng cho tất cả các trường hợp:
         ```js
-          view.setMessage = (elementId, message) => {
+          view.setMessage = (elementId, message = '') => {
             document.getElementById(elementId).innerText = message;
           }
         ```
@@ -392,7 +396,7 @@
                 </div>
 
                 <div class='input-wrapper register-footer'>
-                  <a id='loggin-button'>Already have an account? Login</a>
+                  <a id='already-have-account'>Already have an account? Login</a>
                   <button class='btn' type='submit'>
                     <span>Register</span>
                   </button>
@@ -449,7 +453,7 @@
             });
 
             // add register button listeners
-            document.getElementById('loggin-button').addEventListener('click', () => view.setActiveScreen('login'));
+            document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));
             break;
       };
     ```
@@ -462,6 +466,7 @@
         view.setActiveScreen('register');
       }
     ```
+
 *Nội dung của các files sau bài này: [Login + Register UI Code](example)*
 
 *Bài tiếp theo: [Firebase Authentication]*

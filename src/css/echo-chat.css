@@ -1,0 +1,20 @@
+.echo-chat .auth-buttons {
+  position: absolute;
+  display: inline-block;
+  right: 12px;
+}
+
+.echo-chat .btn {
+  color: #4482FF;
+  background: #ffffff;
+}
+
+.echo-chat .main {
+  display: flex !important;
+  height: calc(100% - 64px);
+  width: 100%;
+}
+
+.echo-chat .conversation-detail {
+  width: 100%;
+}
