@@ -22,32 +22,28 @@ controller.register = async (registerInfo) => {
     view.setMessage('password-error', '');
   }
   if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
-    view.setMessage('confirmPassword-error', `Confirm password didn't match`);
+    view.setMessage('confirmPassword-error', 'Confirm password didnt match');
   } else {
     view.setMessage('confirmPassword-error', '');
   }
 
-  // make sure all user information is correct
   if (registerInfo.firstName && registerInfo.lastName && registerInfo.email && registerInfo.password && registerInfo.confirmPassword === registerInfo.password) {
     try {
-      // create an user account with createUserWithEmailAndPassword()
-      const newUser = await firebase.auth().createUserWithEmailAndPassword(registerInfo.email, registerInfo.password);
+      await firebase.auth().createUserWithEmailAndPassword(registerInfo.email, registerInfo.password);
 
-      // if create user success => update user displayName
       firebase.auth().currentUser.updateProfile({
         displayName: `${registerInfo.firstName} ${registerInfo.lastName}`,
-      });
+      })
 
-      // finally, we send a verify email to user's email address
       firebase.auth().currentUser.sendEmailVerification();
+      view.setMessage('form-success', 'Register success');
     } catch (error) {
-      console.log(error);
+      view.setMessage('form-error', error.message)
     }
   }
 };
 
 controller.login = async (loginInfo) => {
-  // validate email + password
   if (!loginInfo.email) {
     view.setMessage('email-error', 'Please input your email');
   } else {
@@ -62,25 +58,21 @@ controller.login = async (loginInfo) => {
   // call firebase
   if (loginInfo.email && loginInfo.password) {
     try {
-      // sign in user with email + password
       const loginResult = await firebase.auth().signInWithEmailAndPassword(loginInfo.email, loginInfo.password);
 
-      // after sign in, check if user email is verified
       if (!loginResult.user.emailVerified) {
-        view.setMessage('email-error', 'Please verify your email first');
+        view.setMessage('form-error', 'Please verify your email first');
       } else {
-        // save user info to model
         model.loginSuccess({
           uid: loginResult.user.uid,
           displayName: loginResult.user.displayName,
           email: loginResult.user.email,
         });
 
-        // change screen
         view.setActiveScreen('chat');
       }
     } catch (error) {
-      console.log(error);
+      view.setMessage('form-error', error.message)
     }
   }
 };

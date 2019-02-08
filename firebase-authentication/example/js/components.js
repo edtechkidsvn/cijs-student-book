@@ -19,18 +19,25 @@ components.register = `
               <div id='lastName-error' class='error'></div>
             </div>
           </div>
+
           <div class='input-wrapper'>
             <input class='input' type="email" name="email" placeholder="Email" />
             <div id='email-error' class='error'></div>
           </div>
+
           <div class='input-wrapper'>
             <input class='input' type="password" name="password" placeholder="Password" />
             <div id='password-error' class='error'></div>
           </div>
+
           <div class='input-wrapper'>
             <input class='input' type="password" name="confirmPassword" placeholder="Confirm password" />
             <div id='confirmPassword-error' class='error'></div>
           </div>
+
+          <div id='form-error' class='form-error'></div>
+          <div id='form-success' class='form-success'></div>
+
           <div class='input-wrapper register-footer'>
             <a id='already-have-account'>Already have an account? Login</a>
             <button class='btn' type='submit'>
@@ -56,12 +63,16 @@ components.login = `
             <input class='input' type="email" name="email" placeholder="Email" />
             <div id='email-error' class='error'></div>
           </div>
+
           <div class='input-wrapper'>
             <input class='input' type="password" name="password" placeholder="Password" />
             <div id='password-error' class='error'></div>
           </div>
+
+          <div id='form-error' class='form-error'></div>
+
           <div class='input-wrapper login-footer'>
-            <a id='create-an-account' class='login-register'>Create an account</a>
+            <a id='create-account-button' class='login-register'>Create an account</a>
             <button class='btn' type='submit'>
               <span>Login</span>
             </button>
@@ -70,4 +81,4 @@ components.login = `
       </div>
     </div>
   </div>
-`;
+`; 

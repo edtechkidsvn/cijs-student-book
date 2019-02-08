@@ -44,3 +44,15 @@
 .error {
   color: #f5222d;
 }
+
+.form-success {
+  color: #52c41a;
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.form-error {
+  margin: 20px 0px;
+  color: #f5222d;
+  text-align: center;
+}

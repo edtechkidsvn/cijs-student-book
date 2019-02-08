@@ -345,6 +345,7 @@
     - Làm 1 trang "Đăng nhập" tương tự như trang "Đăng kí" với 2 trường là "Email" và "Password"
     - Thực hiện validate với thông tin người dùng nhập vào của 2 trường này
 
+
 *Nội dung của các files sau bài này: [Login + Register UI Code](example)*
 
 *Bài tiếp theo: [Firebase Authentication](firebase-authentication/firebase-authentication.md)*
