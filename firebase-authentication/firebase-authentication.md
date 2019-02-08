@@ -49,7 +49,7 @@
 
     ![Create Firebase Project](/firebase-authentication/create-firebase-project-2.png)
 
-    - Chuyển sang tab "Sign-in Method", click vào nút "Edit" của phần "Email/Password"
+    - Chuyển sang tab "Sign-in Method", click vào nút "Edit" của phần "Email/Password"
 
     ![Create Firebase Project](/firebase-authentication/firebase-authentication-config-1.png)
 
@@ -178,7 +178,7 @@
         }
       }
     ```
-    - Nếu `email` và `password` chính xác, kết quả đăng nhập sẽ được trả về và ta lưu trong biến `loginResult`. nếu không đúng Firebase sẽ throw `error`
+    - Nếu `email` và `password` chính xác, kết quả đăng nhập sẽ được trả về và ta lưu trong biến `loginResult`. Nếu không đúng Firebase sẽ throw `error`
     - Từ biến `loginResult` ta sẽ kiểm tra được thông tin người dùng qua thuộc tính `user`. Ở đây ta sẽ kiểm tra xem email người dùng đã xác nhận hay chưa (`loginResult.user.emailVerified`)
     - Nếu email đã xác nhận, quá trình đăng nhập thành công, ta lưu thông tin người dùng vừa đăng nhập vào model và chuyển màn hình sang phần `chat`
 
