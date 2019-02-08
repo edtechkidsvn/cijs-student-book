@@ -15,6 +15,8 @@
 
 
 **II. Giới thiệu về Firebase**
+- Trong phát triển phần mềm, có rất nhiều tính năng giống nhau ở các dự án (Đăng kí/Đăng nhập, gửi tin nhắn, thông báo, ...) điều này làm tốn khá nhiều thời gian của các lập trình viên. Firebase ra đời đã giúp tiết kiệm rất nhiều thời gian phát triển
+
 1. Firebase là gì ?
     - Firebase là một nền tảng được sở hữu bởi Google, bao gồm nhiều dịch vụ khác nhau giúp quá trình phát triển phần mềm nhanh chóng và tiện lợi hơn
     - 1 số dịch vụ chính của Firebase:
