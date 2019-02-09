@@ -261,4 +261,4 @@
 
 *Nội dung của các files sau bài này: [Firebase Authentication Code](example)*
 
-*Bài tiếp theo: [One to One Chat UI]*
+*Bài tiếp theo: [One to One Chat UI](one-to-one-chat-ui/one-to-one-chat-ui.md)*
