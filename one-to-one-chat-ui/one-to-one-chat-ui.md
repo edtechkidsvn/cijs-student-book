@@ -152,6 +152,10 @@
 
     ![Echo Chat](/one-to-one-chat-ui/echo-chat.png)
 
+- Để đạt được 2 mục tiêu trên ta sẽ cần:
+    - Thêm phần HTML, CSS cho message
+    - Thêm hàm `view.addMessage()` có nhiệm vụ gắn message vào khung chat
+
 1. Tạo phần `html` cho message
     - Phần `html` cho mỗi message sẽ được chia làm 2 trường hợp: Message của mình và message của người khác. Tin nhắn của mình sẽ có background màu xanh và luôn nằm bên tay phải, tin nhắn của người khác sẽ có background xám, nằm trên trái và phía trên sẽ có tên người gửi
 
