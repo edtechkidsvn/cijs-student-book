@@ -204,4 +204,4 @@ Firestore là một CSDL cung cấp bởi Firebase đáp ứng được cả 2 y
 
 *Nội dung của các files sau bài này: [Firestore for One To One Chat](example)*
 
-*Bài tiếp theo: [Friend List UI]*
+*Bài tiếp theo: [Conversation list UI](conversation-list-ui/conversation-list-ui.md)*
