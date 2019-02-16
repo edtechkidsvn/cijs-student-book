@@ -1,0 +1,34 @@
+.create-conversation-container .header {
+  height: 64px;
+  color: #ffffff;
+  background-color: #4482FF;
+  line-height: 64px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.create-conversation-container .main {
+  margin: 64px 20%;
+}
+
+.create-conversation-container .main h3 {
+  font-size: 32px;
+}
+
+.create-conversation-container .conversation-form {
+  margin: 32px 0px;
+}
+
+.create-conversation-container .input {
+  margin-top: 24px;
+}
+
+.create-conversation-container .conversation-form button {
+  margin-top: 24px;
+}
+
+#cancel-create-conversation {
+  background-color: #ffffff;
+  color: #595959;
+  border: 1px solid #e9e9e9;
+}

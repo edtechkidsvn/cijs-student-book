@@ -8,5 +8,5 @@
 6. [Conversation list UI](/conversation-list-ui/conversation-list-ui.md)
 7. [Firestore for friend list](/firestore-for-conversation-list/firestore-for-conversation-list.md)
 8. UI Responsive
-9. Group chat UI
+9. [Group chat UI](/group-chat-ui/group-chat-ui.md)
 10. Firestore for group chat
