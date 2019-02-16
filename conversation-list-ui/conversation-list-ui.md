@@ -106,7 +106,7 @@
 
         const conversationContainer = document.createElement('div');
         conversationContainer.classList.add('conversation');
-        conversation.id = conversationObj.id;
+        conversationContainer.id = conversationObj.id;
         conversationContainer.appendChild(conversationName);
 
         if (conversationObj.id === model.activeConversation.id) {
@@ -291,7 +291,7 @@
           document.getElementById('app').innerHTML = components.createConversation;
 
           // listen to "Cancel" button
-          document.getElementById('cancel-create-conversation').addEventListener('click', () => view.setActiveScreen('chat'));
+          document.getElementById('cancel-create-conversation').addEventListener('click', () => view.backToChatScreen());
 
           // listen to form submit
           const createConversationForm = document.getElementById('create-conversation-form');
@@ -310,9 +310,42 @@
       };
     ```
 
+5. Thêm hàm `view.backToChatScreen()`
+    - Trong trường hợp người dùng đang ở trong màn hình `createConversation` và chọn "Cancel", lúc này ta sẽ chuyển ngược lại màn hình `chat` bằng hàm `view.backToChatScreen()` như sau:
+
+    ```js
+      view.backToChatScreen = () => {
+        // mount chat screen
+        document.getElementById('app').innerHTML = components.chat;
+
+        // add message form listener
+        const messageForm = document.getElementById('message-form');
+        messageForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const newMessage = messageForm.message.value;
+          controller.addMessage(newMessage);
+
+          messageForm.message.value = '';
+        });
+
+        // create conversation listener
+        document.getElementById('create-conversation').addEventListener('click', () => view.setActiveScreen('createConversation'));
+
+        for (let conversation of model.conversations) {
+          view.addConversation(conversation);
+        }
+        for (let message of model.activeConversation.messages) {
+          view.addMessage(message);
+        }
+      };
+    ```
+
+    - Hàm `view.backToChatScreen()` sẽ gần tương tự như hàm `view.setActiveScreen()` ngoại trừ việc chúng ta không gọi `model.loadConversations()` nữa vì hàm này chỉ cần gọi 1 lần sau khi người dùng đăng nhập thành công
+
 - Bài tập: Tạo hàm `controller.createConversation()` trong file `controller.js`. Bên trong hàm này, tiến hành validate input và hiện ra thông báo giống như Form đăng kí
 
 
 *Nội dung của các files sau bài này: [Conversation list UI](example)*
 
-*Bài tiếp theo: [Firestore For Conversation List]()*
+*Bài tiếp theo: [Firestore For Conversation List](firestore-for-conversation-list/firestore-for-conversation-list-ui.md)*

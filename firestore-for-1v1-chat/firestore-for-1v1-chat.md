@@ -196,8 +196,9 @@ Firestore là một CSDL cung cấp bởi Firebase đáp ứng được cả 2 y
     ```
 
     - Ta sẽ sử dụng hàm where để filter và chỉ lấy những `conversation` mà người dùng tham gia
-    - Để lắng nghe thay đổi, ta sẽ sử dụng hàm `onSnapshot()`, hàm này sẽ có param truyền vào là 1 hàm `callback`, mỗi khi dữ liệu thay đổi thì hàm `callback` này sẽ được gọigọi
-    - Hàm callback sẽ có param truyền vào là object `snapShot`, object này sẽ chứa thông tin vè các dữ liệu bị thay đổi
+    - Để lắng nghe thay đổi, ta sẽ sử dụng hàm `onSnapshot()`, hàm này sẽ có param truyền vào là 1 hàm `callback`, mỗi khi dữ liệu thay đổi thì hàm `callback` này sẽ được gọi
+    - Hàm callback sẽ có param truyền vào là object `snapShot`, object này sẽ chứa thông tin vè các dữ liệu bị thay đổi. Trong đó ta quan tâm đến `snapShot.docChanges()`, hàm này sẽ trả về 1 mảng các object, chứa thông tin về những bản ghi có dữ liệu bị thay đổi
+    - Chúng ta update lại bản ghi tương ứng trong `model.conversations`, sau đó nếu bản nghi có dữ liệu thay đổi là `model.activeConversation` thì chúng ta render message mới lên khung chat
 
 - Kiểm tra lại tính năng chat 1v1 bằng cách mở file `index.html` trên 2 cửa sổ khác nhau, mỗi cửa sổ đăng nhập 1 tài khoản khác nhau
 

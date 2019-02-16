@@ -69,6 +69,9 @@ view.setActiveScreen = (screenName) => {
       // create conversation listener
       document.getElementById('create-conversation').addEventListener('click', () => view.setActiveScreen('createConversation'));
 
+      // remove notification
+      document.getElementById('message-input').addEventListener('click', () => view.removeNotification(model.activeConversation.id));
+
       // load conversations
       model.loadConversations();
       break;
@@ -122,16 +125,22 @@ view.addConversation = (conversationObj) => {
   const conversationName = document.createElement('span');
   conversationName.innerText = conversationObj.name;
 
+  const conversationNoti = document.createElement('span');
+  conversationNoti.classList.add('notification');
+  conversationNoti.innerText = 'new';
+
   const conversationContainer = document.createElement('div');
   conversationContainer.classList.add('conversation');
   conversationContainer.id = conversationObj.id;
   conversationContainer.appendChild(conversationName);
+  conversationContainer.appendChild(conversationNoti);
 
   if (conversationObj.id === model.activeConversation.id) {
     conversationContainer.classList.add('selected-conversation');
   }
 
   conversationContainer.addEventListener('click', () => {
+    view.removeNotification(conversationObj.id);
     controller.changeActiveConversation(conversationObj.id);
   });
 
@@ -144,7 +153,7 @@ view.changeActiveConversation = () => {
 
   // change selected conversation style
   document.querySelector('.selected-conversation').classList.remove('selected-conversation');
-  document.getElementById(model.activeConversation.id).classList.add(selected-conversation);
+  document.getElementById(model.activeConversation.id).classList.add('selected-conversation');
 
   // re-render messages
   document.getElementById('conversation-messages').innerHTML = '';
@@ -177,4 +186,14 @@ view.backToChatScreen = () => {
   for (let message of model.activeConversation.messages) {
     view.addMessage(message);
   }
+};
+
+view.showNotification = (conversationId) => {
+  const conversation = document.getElementById(conversationId);
+  conversation.lastChild.style.display = 'inline-block';
+};
+
+view.removeNotification = (conversationId) => {
+  const conversation = document.getElementById(conversationId);
+  conversation.lastChild.style.display = 'none';
 };
