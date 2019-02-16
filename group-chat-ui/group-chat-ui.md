@@ -190,4 +190,4 @@
 
 *Nội dung của các files sau bài này: [Group chat UI](example)*
 
-*Bài tiếp theo: [Firestore For Group Chat]*
+*Bài tiếp theo: [Firestore For Group Chat](firestore-for-group-chat/firestore-for-group-chat.md)*
