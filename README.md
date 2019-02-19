@@ -7,6 +7,6 @@
 5. [Firestore for one-to-one chat](/firestore-for-1v1-chat/firestore-for-1v1-chat.md)
 6. [Conversation list UI](/conversation-list-ui/conversation-list-ui.md)
 7. [Firestore for friend list](/firestore-for-conversation-list/firestore-for-conversation-list.md)
-8. UI Responsive
+8. [UI Responsive](/responsive-ui/responsive-ui.md)
 9. [Group chat UI](/group-chat-ui/group-chat-ui.md)
-10. Firestore for group chat
+10. [Firestore for group chat](/firestore-for-group-chat/firestore-for-group-chat.md)

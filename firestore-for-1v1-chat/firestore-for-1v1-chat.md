@@ -141,6 +141,8 @@ Firestore là một CSDL cung cấp bởi Firebase đáp ứng được cả 2 y
 
     - Tiếp theo chúng ta sẽ gọi liên tiếp 3 hàm `collection().doc().update()` (kĩ thuật này gọi là "Method chaining"). Trong đó params truyền vào hàm `collection()` sẽ là tên của collection mà chúng ta muốn lưu dữ liệu vào, params truyền vào hàm `doc()` sẽ là ID của document mà ta luốn lưu dữ liệu vào, cuối cùng ta sử dụng hàm `update()` để "push" message mới nhất vào mảng `messages`
 
+    - Do `messages` trong CSDL của chúng ta được lưu dưới dạng 1 mảng (Array), vì vậy mỗi khi thêm message vào conversation, chúng ta sẽ thêm message mới này vào vị trí cuối của mảng. Việc này được thực hiện thông qua hàm firebase.firestore.FieldValue.arrayUnion() của Firebase. Hàm này có chức năng tương tự như hàm `array.push()`
+
 
 **V. Lắng nghe sự kiện "update" từ Firestore để render message lên khung chat**
 - Flow lắng nghe các "conversation" sau khi người dùng đăng nhập thành công sẽ diễn ra như sau

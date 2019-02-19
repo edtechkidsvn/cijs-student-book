@@ -20,6 +20,8 @@
 - Phần hiển thị "Member list" của chúng ta sẽ nằm trong màn hình chat, phía bên tay phải của khung chat như sau:
     ![Group chat UI 1](/group-chat-ui/conversation-list-1.png)
 
+- Ngoài ra, để giữ cho ứng dụng được responsive, chúng ta sẽ ẩn phần "Member list" khi màn hình có chiều rộng nhỏ hơn 1200px (<= 1200px)
+
 1. Update lại `html` của phần chat trong file `components.js`:
     - Chúng ta sẽ thêm 1 thẻ `div.conversation-members` ngay bên dưới thẻ `div.conversation-detail` để chứa "Member list". Trong thẻ `div.conversation-members` sẽ bao gồm 2 thành phần chính là:
       - Danh sách thành viên của conversation nằm trong thẻ `div#member-list`
@@ -95,6 +97,19 @@
     ```
 
     - Chú ý: style của class `.member` và `.member:hover` sẽ được sử dụng sau, vì đây là 2 thẻ `div` sẽ được tạo bởi hàm trong file `view.js` chứ không có sẵn từ đầu trong phần `html`
+
+3. Thêm breakpoints để giữ cho ứng dụng responsive
+    - Chúng ta sẽ thêm 1 breakpoint tại 1200px để ẩn đi phần "Member list" nếu kích thước nhỏ hơn mức này:
+
+    ```css
+      @media screen and (max-width: 1200px) {
+        .chat-container .main {
+          ...
+
+          grid-template-columns: 25% 75%;
+        }
+      }
+    ```
 
 **III. Thêm logic để validate form "Add member"**
 - Như đã giới thiệu ở các bài trước, "Input validation" đóng 1 vai trò rất quan trọng trong ứng dụng của chúng ta. Tiếp theo, chúng ta sẽ validate thông tin người dùng khi muốn thêm member vào conversation qua 2 bước:
@@ -184,6 +199,37 @@
         member.classList.add('member');
         member.innerHTML = `<i>#${memberEmail}</i>`;
         document.getElementById('member-list').appendChild(member);
+      };
+    ```
+
+4. Khi đã hiển thị được "Member list", nếu kiểm tra lại 1 lượt các tính năng có trong màn hình chat, ta sẽ thấy có 1 bug như sau:
+    - Khi người dùng chuyển sang màn hình `createConversation` và back lại, "Member list" sẽ không còn hiển thị nữa. Để fix bug này, chúng ta sẽ cần update lại hàm `view.backToChatScreen()`, đây là hàm làm nhiệm vụ chuyển từ màn hình `createConversation` trở về màn hình chat
+
+    - Chúng ta sẽ cần update hàm `view.backToChatScreen()` để hàm này có thể làm thêm 2 việc:
+      - Render "Member list" từ danh sách `users` của `model.activeConversation`
+      - Lắng nghe sự kiện `submit` của form "Add member"
+
+    ```js
+      view.backToChatScreen = () => {
+        ...
+
+        // render member list
+        for (let member of model.activeConversation.users) {
+          view.addMember(member);
+        }
+
+        // add member form listener
+        const addMemberForm = document.getElementById('add-member-form');
+        addMemberForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const newMemberEmail = addMemberForm.memberEmail.value;
+          controller.addMember({
+            newMember: newMemberEmail,
+          });
+
+          addMemberForm.memberEmail.value = '';
+        });
       };
     ```
 

@@ -66,19 +66,6 @@ view.setActiveScreen = (screenName) => {
         messageForm.message.value = '';
       });
 
-      // add member form listener
-      const addMemberForm = document.getElementById('add-member-form');
-      addMemberForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const newMemberEmail = addMemberForm.memberEmail.value;
-        controller.addMember({
-          newMember: newMemberEmail,
-        });
-
-        addMemberForm.memberEmail.value = '';
-      });
-
       // create conversation listener
       document.getElementById('create-conversation').addEventListener('click', () => view.setActiveScreen('createConversation'));
 
@@ -198,12 +185,6 @@ view.changeActiveConversation = () => {
   for (let message of model.activeConversation.messages) {
     view.addMessage(message);
   }
-
-  // re-render member list
-  document.getElementById('member-list').innerHTML = '';
-  for (let member of model.activeConversation.users) {
-    view.addMember(member);
-  }
 };
 
 view.backToChatScreen = () => {
@@ -230,22 +211,6 @@ view.backToChatScreen = () => {
   for (let message of model.activeConversation.messages) {
     view.addMessage(message);
   }
-
-  for (let member of model.activeConversation.users) {
-    view.addMember(member);
-  }
-  // add member form listener
-  const addMemberForm = document.getElementById('add-member-form');
-  addMemberForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const newMemberEmail = addMemberForm.memberEmail.value;
-    controller.addMember({
-      newMember: newMemberEmail,
-    });
-
-    addMemberForm.memberEmail.value = '';
-  });
 };
 
 view.showNotification = (conversationId) => {
@@ -256,11 +221,4 @@ view.showNotification = (conversationId) => {
 view.removeNotification = (conversationId) => {
   const conversation = document.getElementById(conversationId);
   conversation.lastChild.style.display = 'none';
-};
-
-view.addMember = (memberEmail) => {
-  const member = document.createElement('div');
-  member.classList.add('member');
-  member.innerHTML = `<i>#${memberEmail}</i>`;
-  document.getElementById('member-list').appendChild(member);
 };

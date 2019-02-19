@@ -158,6 +158,31 @@ view.addConversation = (conversationObj) => {
   });
 
   document.getElementById('conversation-list').appendChild(conversationContainer);
+
+  const mediaQueryResult = window.matchMedia('screen and (max-width: 768px)');
+  if (mediaQueryResult.matches) {
+    const conversationElement = document.getElementById(conversationObj.id);
+    const firstLetter = conversationObj.name.charAt(0).toUpperCase();
+    conversationElement.firstChild.innerText = firstLetter;
+
+    document.getElementById('create-conversation').innerText = '+';
+  }
+
+  // media query listener
+  mediaQueryResult.addListener((mediaQuery) => {
+    if (mediaQuery.matches) {
+      const conversationElement = document.getElementById(conversationObj.id);
+      const firstLetter = conversationObj.name.charAt(0).toUpperCase();
+      conversationElement.firstChild.innerText = firstLetter;
+
+      document.getElementById('create-conversation').innerText = '+';
+    } else {
+      const conversationElement = document.getElementById(conversationObj.id);
+      conversationElement.firstChild.innerText = conversationObj.name;
+
+      document.getElementById('create-conversation').innerText = '+ New Conversation';
+    }
+  });
 };
 
 view.changeActiveConversation = () => {
@@ -205,6 +230,22 @@ view.backToChatScreen = () => {
   for (let message of model.activeConversation.messages) {
     view.addMessage(message);
   }
+
+  for (let member of model.activeConversation.users) {
+    view.addMember(member);
+  }
+  // add member form listener
+  const addMemberForm = document.getElementById('add-member-form');
+  addMemberForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const newMemberEmail = addMemberForm.memberEmail.value;
+    controller.addMember({
+      newMember: newMemberEmail,
+    });
+
+    addMemberForm.memberEmail.value = '';
+  });
 };
 
 view.showNotification = (conversationId) => {

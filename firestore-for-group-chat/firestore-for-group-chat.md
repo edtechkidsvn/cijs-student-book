@@ -1,7 +1,7 @@
 ## CI JS - Student book
 ### Firestore for Group Chat
 
-Tiếp theo bài trước, chúng ta đã hoàn render "Member list" và validate user input khi người dùng muốn thêm member vào conversation. Ở bài này, chúng ta sẽ lưu thông tin khi thêm member vào conversation lên Firestore qua 2 bước:
+Tiếp theo bài trước, chúng ta đã render "Member list" và validate user input khi người dùng muốn thêm member vào conversation. Ở bài này, chúng ta sẽ lưu thông tin khi thêm member vào conversation lên Firestore qua 2 bước:
 
   - Tạo hàm `model.addMember()` để lưu thông tin lên Firestore
   - Update phần "Lắng nghe" dữ liệu từ Firestore để phân biệt "message mới" và "member mới"
@@ -46,9 +46,13 @@ Tiếp theo bài trước, chúng ta đã hoàn render "Member list" và validat
         ...
 
         if (item.type === 'modified') {
+
           ...
+
         } else if (item.type === 'added') {
+
           ...
+
         }
 
         ...
@@ -94,4 +98,7 @@ Tiếp theo bài trước, chúng ta đã hoàn render "Member list" và validat
     ```
 
     - Để kiểm tra xem sự thay đổi dữ liệu thuộc trường hợp nào trong 2 trường hợp "Có message mới" và "Có member mới" chúng ta sẽ so sánh độ dài của mảng `messages` trước và sau khi có thay đổi dữ liệu. Từ đó gọi hàm tương ứng trong `view`
+
+
+*Nội dung của các files sau bài này: [Firestore for Group Chat](example)*
 

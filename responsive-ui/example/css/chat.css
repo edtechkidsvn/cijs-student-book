@@ -15,7 +15,7 @@
 .chat-container .main {
   height: calc(100% - 64px);
   display: grid;
-  grid-template-columns: 25% 50% 25%;
+  grid-template-columns: 25% 75%;
   grid-template-rows: 100%;
 }
 
@@ -23,7 +23,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-right: 1px solid #e9e9e9;
 }
 
 .chat-container .main .conversation-detail .conversation-header {
@@ -129,37 +128,6 @@
   padding: 0px 4px;
 }
 
-.chat-container .main .conversation-members {
-  position: relative;
-}
-
-.chat-container .main .conversation-members .member-list .member {
-  height: 42px;
-  line-height: 42px;
-  padding-left: 12px;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-container .main .conversation-members .member-list .member:hover {
-  background-color: rgba(0, 0, 0, .05);
-}
-
-.chat-container .main .conversation-members .add-member {
-  position: absolute;
-  width: 100%;
-  bottom: 0px;
-  padding: 12px;
-}
-
-.chat-container .main .conversation-members .add-member .btn {
-  display: inline-block;
-  width: 100%;
-  margin-top: 10px;
-}
-
 @media screen and (max-width: 768px) {
   .chat-container .main {
     height: calc(100% - 64px);
@@ -190,14 +158,5 @@
     height: 10px;
     position: absolute;
     left: 70px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .chat-container .main {
-    height: calc(100% - 64px);
-    display: grid;
-    grid-template-columns: 25% 75%;
-    grid-template-rows: 100%;
   }
 }

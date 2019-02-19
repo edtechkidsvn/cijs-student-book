@@ -100,60 +100,7 @@
 
     ![Cấu trúc folder](/introduction/folder-structure.png)
 
-4. Tạo file `style.css` bên trong folder `css`. Bên trong file `style.css`, thêm đoạn code CSS như sau:
-
-    ```css
-      * {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        box-sizing: border-box;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 14px;
-      }
-    ```
-
-5. Bên trong folder `js`, tạo lần lượt các file `model.js`, `view.js`, `controller.js`. Đây sẽ là các file `js` chính, chứa logic của ứng dụng. (Theo mô hình MVC)
-    - Bên trong mỗi file `model.js`, `view.js`, `controller.js` sẽ chứa 1 object, bao gồm các hàm và thuộc tính mà file đó sẽ quản lí (theo mô hình MVC). Lần lượt khởi tạo các biến như sau:
-
-        ```js
-          // model.js
-          const model = {};
-        ```
-
-        ```js
-          // view.js
-          const view = {};
-        ```
-
-        ```js
-          // controller.js
-          const controller = {};
-        ```
-
-6. Tạo file `components.js` trong folder `js`
-
-7. Tạo file `index.js` trong folder `js`. Trong file `index.js`, chúng ta sẽ khởi tạo màn hình "Đăng kí" mỗi khi ứng dụng mở lên:
-
-    ```js
-      window.onload = () => {
-        view.setActiveScreen('register');
-      };
-    ```
-
-- Thêm hàm `setActiveScreen()` vào file `view.js`:
-
-    ```js
-      view.setActiveScreen = (screenName) => {
-        switch (screenName) {
-          case 'register':
-            document.getElementById('app').innerHTML = components.register;
-            break;
-        }
-      };
-    ```
-
-8. Tạo file `index.html` bên trong folder `html`. Thêm bộ khung cơ bản cho file `index.html`.
+4. Tạo file `index.html` bên trong folder `html`. Thêm bộ khung cơ bản cho file `index.html`
 
     ```html
         <!DOCTYPE html>
@@ -177,6 +124,69 @@
             <script src="../js/index.js"></script>
           </body>
         </html>
+    ```
+
+    - Ngoài ra, chúng ta sẽ link file `style.css` và các file javascript sẽ sử dụng trong app vào file HTML này. Các file này sẽ được tạo lần lượt phía sau
+
+5. Tạo file `style.css` bên trong folder `css`. Bên trong file `style.css`, thêm đoạn code CSS như sau:
+
+    ```css
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+      }
+    ```
+
+6. Bên trong folder `js`, tạo lần lượt các file `model.js`, `view.js`, `controller.js`. Đây sẽ là các file `js` chính, chứa logic của ứng dụng. (Theo mô hình MVC)
+    - Bên trong mỗi file `model.js`, `view.js`, `controller.js` sẽ chứa 1 object, bao gồm các hàm và thuộc tính mà file đó sẽ quản lí (theo mô hình MVC). Lần lượt khởi tạo các biến như sau:
+
+        ```js
+          // model.js
+          const model = {};
+        ```
+
+        ```js
+          // view.js
+          const view = {};
+        ```
+
+        ```js
+          // controller.js
+          const controller = {};
+        ```
+
+7. Tạo file `components.js` trong folder `js`. Đây sẽ là nơi chúng ta lưu chữ phần HTML cho các màn hình dưới dạng template string, để dễ dàng sửa dụng khi cần chuyển qua lại giữa các màn hình
+    - Khởi tạo giá trị cho màn hình "Đăng kí" trong file `components.js`:
+
+    ```js
+      const components = {};
+      components.register = `
+        <div>Register screen</div>
+      `;
+    ```
+
+8. Tạo file `index.js` trong folder `js`. Trong file `index.js`, chúng ta sẽ khởi tạo màn hình "Đăng kí" mỗi khi ứng dụng mở lên:
+
+    ```js
+      window.onload = () => {
+        view.setActiveScreen('register');
+      };
+    ```
+
+- Thêm hàm `setActiveScreen()` vào file `view.js`:
+
+    ```js
+      view.setActiveScreen = (screenName) => {
+        switch (screenName) {
+          case 'register':
+            document.getElementById('app').innerHTML = components.register;
+            break;
+        }
+      };
     ```
 
 
