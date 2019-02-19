@@ -192,4 +192,4 @@
 
 *Nội dung của các files sau bài này: [Introduction Code](example)*
 
-*Bài tiếp theo: [Login + Register UI](login-register-ui/login-register-ui.md)*
+*Bài tiếp theo: [Login + Register UI](/login-register-ui/login-register-ui.md)*
