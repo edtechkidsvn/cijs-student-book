@@ -164,4 +164,4 @@ Vào năm 2010, thuật ngữ "Responsive Web Design" được ra đời để g
 
 *Nội dung của các files sau bài này: [Responsive UI](example)*
 
-*Bài tiếp theo: [Group Chat UI](group-chat-ui/group-chat-ui.md)*
+*Bài tiếp theo: [Group Chat UI](/group-chat-ui/group-chat-ui.md)*

@@ -348,4 +348,4 @@
 
 *Nội dung của các files sau bài này: [Conversation list UI](example)*
 
-*Bài tiếp theo: [Firestore For Conversation List](firestore-for-conversation-list/firestore-for-conversation-list-ui.md)*
+*Bài tiếp theo: [Firestore For Conversation List](/firestore-for-conversation-list/firestore-for-conversation-list-ui.md)*

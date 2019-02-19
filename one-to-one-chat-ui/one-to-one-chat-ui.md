@@ -266,4 +266,4 @@
 
 *Nội dung của các files sau bài này: [One To One Chat UI](example)*
 
-*Bài tiếp theo: [Firestore For One to One Chat](firestore-for-1v1-chat/firestore-for-1v1-chat.md)*
+*Bài tiếp theo: [Firestore For One to One Chat](/firestore-for-1v1-chat/firestore-for-1v1-chat.md)*

@@ -275,4 +275,4 @@ Chúng ta đã đi được một nửa chặng đường xây dựng tính năn
 
 *Nội dung của các files sau bài này: [Firestore for Conversation List](example)*
 
-*Bài tiếp theo: [UI Responsive](responsive-ui/responsive-ui.md)*
+*Bài tiếp theo: [UI Responsive](/responsive-ui/responsive-ui.md)*

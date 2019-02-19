@@ -348,5 +348,5 @@
 
 *Nội dung của các files sau bài này: [Login + Register UI Code](example)*
 
-*Bài tiếp theo: [Firebase Authentication](firebase-authentication/firebase-authentication.md)*
+*Bài tiếp theo: [Firebase Authentication](/firebase-authentication/firebase-authentication.md)*
 
