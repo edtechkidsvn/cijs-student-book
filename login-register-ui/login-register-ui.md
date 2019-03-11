@@ -224,9 +224,11 @@
         view.setActiveScreen = (screenName) => {
           switch (screenName) {
             case 'register':
-              ...<br/>
+              ...
+              <br/>
               <b>const registerForm = document.getElementById('register-form');
-              registerForm.addEventListener('submit', (e) => {});</b><br/>
+              registerForm.addEventListener('submit', (e) => {});</b>
+              <br/>
               ...
           }
         };
