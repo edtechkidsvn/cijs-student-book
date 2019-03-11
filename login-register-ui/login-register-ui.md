@@ -255,7 +255,7 @@
                   confirmPassword: registerForm.confirmPassword.value,
                 };
                 <br/>
-                controller.register(registerInfo);
+                controller.register(registerInfo);</b>
               });
               ...
           }
