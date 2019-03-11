@@ -224,9 +224,9 @@
         view.setActiveScreen = (screenName) => {
           switch (screenName) {
             case 'register':
-              ...
+              ...<br/>
               <b>const registerForm = document.getElementById('register-form');
-              registerForm.addEventListener('submit', (e) => {});</b>
+              registerForm.addEventListener('submit', (e) => {});</b><br/>
               ...
           }
         };
@@ -243,15 +243,15 @@
               ...
               const registerForm = document.getElementById('register-form');
               registerForm.addEventListener('submit', (e) => {
-                <b>e.preventDefault();
+                <b>e.preventDefault();<br/>
                 const registerInfo = {
                   firstName: registerForm.firstName.value,
                   lastName: registerForm.lastName.value,
                   email: registerForm.email.value,
                   password: registerForm.password.value,
                   confirmPassword: registerForm.confirmPassword.value,
-                };
-                controller.register(registerInfo);</b>
+                };<br/>
+                controller.register(registerInfo);
               });
               ...
           }
@@ -284,22 +284,22 @@
               document.getElementById('firstName-error').innerText = 'Please input your first name';
             } else {
               document.getElementById('firstName-error').innerText = '';
-            }
+            }<br/>
             if (!registerInfo.lastName) {
               document.getElementById('lastName-error').innerText = 'Please input your last name';
             } else {
               document.getElementById('lastName-error').innerText = '';
-            }
+            }<br/>
             if (!registerInfo.email) {
               document.getElementById('email-error').innerText = 'Please input your email';
             } else {
               document.getElementById('email-error').innerText = '';
-            }
+            }<br/>
             if (!registerInfo.password) {
               document.getElementById('password-error').innerText = 'Please input your password';
             } else {
               document.getElementById('password-error').innerText = '';
-            }
+            }<br/>
             if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
               document.getElementById('confirmPassword-error').innerText = 'Confirm password didnt match';
             } else {
@@ -330,22 +330,22 @@
               view.setMessage('firstName-error', 'Please input your first name');
             } else {
               view.setMessage('firstName-error', '');
-            }
+            }<br/>
             if (!registerInfo.lastName) {
               view.setMessage('lastName-error', 'Please input your last name');
             } else {
               view.setMessage('lastName-error', '');
-            }
+            }<br/>
             if (!registerInfo.email) {
               view.setMessage('email-error', 'Please input your email');
             } else {
               view.setMessage('email-error', '');
-            }
+            }<br/>
             if (!registerInfo.password) {
               view.setMessage('password-error', 'Please input your password');
             } else {
               view.setMessage('password-error', '');
-            }
+            }<br/>
             if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
               view.setMessage('confirmPassword-error', 'Confirm password didnt match');
             } else {
