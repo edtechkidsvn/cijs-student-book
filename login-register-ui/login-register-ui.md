@@ -179,6 +179,7 @@
     - Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
 
         <pre>
+        <code>
           view.setActiveScreen = (screenName) => {
             switch (screenName) {
               case 'register':
@@ -186,10 +187,14 @@
                 document.getElementById('app').innerHTML = components.register;
                 
                 // add register button listeners
-                <b>document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));</b>
+                <b>document.getElementById('already-have-account').addEventListener('click', () => {
+                  view.setActiveScreen('login');
+                });</b>
+                
                 ...
             }
           };
+        <code>
         </pre>
 
 - Kết quả:
