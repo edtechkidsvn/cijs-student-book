@@ -8,17 +8,20 @@
     - Sử dụng Firebase để lưu thông tin đăng kí và gửi email xác nhận đến người dùng
     - Cho phép người dùng đăng nhập bằng tài khoản đã đăng kí
 
+![Màn hình đăng kí 1](/login-register-ui/register-ui.png)
+
+![Màn hình đăng kí 2](/login-register-ui/register-ui-validation.png)
+
+
 **I. Mục tiêu bài học**
-1. Dựng khung HTML + CSS cho trang "Đăng kí tài khoản"
+1. Dựng khung HTML cho trang "Đăng kí tài khoản"
 
 2. Tìm hiểu về "Input Validation". Áp dụng validate thông tin đăng kí của người dùng
 
-    ![Màn hình đăng kí 1](/login-register-ui/register-ui.png)
-
-    ![Màn hình đăng kí 2](/login-register-ui/register-ui-validation.png)
+3. Thêm CSS để hoàn thiện giao diện
 
 
-**II. Xây dựng màn hình "Đăng kí tài khoản"**
+**II. Dựng khung HTML cho màn hình "Đăng kí tài khoản"**
 1. Thêm phần code `html` cho màn hình đăng kí vào file `components.js`:
 
     ```js
@@ -65,141 +68,32 @@
       `;
     ```
 
-2. Thêm style cho màn hình "Đăng kí"
-- Tạo file `register.css` trong folder `css`, thêm style cho thẻ `div.register-container` và thẻ `div.form-wrapper` như sau:
+  - Lắng nghe sự kiện `click` của nút "Already have an account", khi người dùng click nút này, chúng ta sẽ chuyển sang màn hình "Đăng nhập". Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
 
-    ```css
-      .register-container {
-        width: 100%;
-        min-width: 400px;
-        height: 100vh;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        position: relative;
-        background: url("../images/login-background.jpg") no-repeat center center;
-        background-size: cover;
-      }
-
-
-      .register-container .form-wrapper {
-        width: 500px;
-        min-width: 400px;
-        height: 100%;
-        padding: 70px 50px;
-        background-color: #ffffff;
-      }
-
-      .register-container .form-wrapper .logo {
-        width: 100%;
-        display: flex;
-        margin-bottom: 50px;
-        justify-content: center;
-      }
-
-      .register-container .form-wrapper .logo span {
-        font-size: 32px;
-        font-weight: 300;
-        color: #788195;
-      }
-
-      .register-container .form-wrapper .form-container .name-wrapper {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .register-container .form-wrapper .form-container .name-wrapper .input-wrapper {
-        width: 48%;
-      }
-
-      .register-container .form-wrapper .form-container .register-footer {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .register-container .form-wrapper .form-container .register-footer #already-have-account {
-        cursor: pointer;
-      }
-    ```
-
-    - Thuộc tính `height: 100vh` (vh: view height) đảm bảo `div.register-container` sẽ luôn chiếm toàn bộ chiều dài của sổ trình duyệt
-    - Thuộc tính `justify-content: flex-end` sẽ giữ thẻ `div.form-wrapper` luôn ở bên phải của màn hình
-
-- Thêm style cho class `.input` và `.error` 
-    - Ở đây, chúng ta muốn tất cả các ô input sẽ có style giống nhau và có thể tái sử dụng ở nhiều màn hình khác nhau, vì vậy các thẻ input đều có class là `.input`. Tương tự với class `.btn` và class `.error`
-
-    - Các style này sẽ được dùng lặp lại ở nhiều màn hình khác nhau nên ta sẽ thêm style cho class `.input`, `.input-wrapper`, `.btn` và `.error` bên trong file `style.css`:
-
-        ```css
-          .input-wrapper {
-            margin-bottom: 15px;
+      <pre>
+        <code>
+        view.setActiveScreen = (screenName) => {
+          switch (screenName) {
+            case 'register':
+              // mount register screen
+              document.getElementById('app').innerHTML = components.register;
+              <br/>
+              // add register button listeners
+              <b>document.getElementById('already-have-account').addEventListener('click', () => {
+                view.setActiveScreen('login');
+              });</b>
+              <br/>
+              ...
           }
-
-          .input {
-            height: 42px;
-            padding: 6px 10px;
-            width: 100%;
-            cursor: text;
-            text-align: left;
-            font-size: 13px;
-            line-height: 1.5;
-            color: #595959;
-            background-color: #fff;
-            background-image: none;
-            border: 1px solid #e9e9e9;
-            border-radius: 5px;
-          }
-
-          .btn {
-            font-weight: 500;
-            color: #ffffff;
-            background-color: #4482FF;
-            border-color: #4482FF;
-            display: inline-block;
-            margin-bottom: 0;
-            text-align: center;
-            cursor: pointer;
-            border: 1px solid transparent;
-            white-space: nowrap;
-            line-height: 1.5;
-            padding: 0 25px;
-            font-size: 14px;
-            border-radius: 4px;
-            height: 36px;
-          }
-
-          .error {
-            color: #f5222d;
-          }
-        ```
+        };
+        </code>
+      </pre>  
   
-    - Như vậy, ở bất kì màn hình nào, nếu sử dụng thẻ `<input>` hoặc `<button>`, ta chỉ cần thêm class `.input` hoặc `.btn`
+  - Kết quả:
 
-- Lắng nghe sự kiện `click` của nút "Already have an account"
-    - Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
+    ![Kết quả 1](/login-register-ui/register-ui-without-css.png)
 
-        <pre>
-          <code>
-          view.setActiveScreen = (screenName) => {
-            switch (screenName) {
-              case 'register':
-                // mount register screen
-                document.getElementById('app').innerHTML = components.register;
-                
-                // add register button listeners
-                <b>document.getElementById('already-have-account').addEventListener('click', () => {
-                  view.setActiveScreen('login');
-                });</b>
-                <br/>
-                ...
-            }
-          };
-          </code>
-        </pre>
-
-- Kết quả:
-
-    ![Kết quả 1](/login-register-ui/result-2.png)
+  - Như vậy, chúng ta đã có 1 trang HTML đơn giản để người dùng có thể đăng kí tài khoản. Tiếp theo chúng ta sẽ tìm hiểu về "Form validation", việc thêm style cho trang HTML chúng ta sẽ thực hiện ở phần cuối của bài học
 
 
 **III. Input validation**
@@ -214,10 +108,9 @@
 
 2. Thực hiện "Input validation" cho trang "Đăng kí"
 
-    ![Form validation](/login-register-ui/form-validation.png)
+    ![Form validation](/login-register-ui/form-validation-without-css.png)
 
-    - Thực hiện bắt sự kiện submit (Đây là sự kiện khởi đầu quá trình validation)
-      - Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
+    - Đầu tiên ta sẽ cần bắt sự kiên `submit` của form đăng kí (Đây là sự kiện khởi đầu quá trình validation). Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
 
       <pre>
         <code>
@@ -235,7 +128,7 @@
         </code>
       </pre>
     
-    - Thực hiện lấy input người dùng từ form và validate input người dùng bằng cách truyền thông tin qua hàm `controller.register()`
+    - Tiếp theo, lấy input người dùng từ form và validate input người dùng bằng cách truyền thông tin qua hàm `controller.register()`
 
       <pre>
         <code>
@@ -263,7 +156,7 @@
         </code>
       </pre>
 
-    - Validate input người dùng trong `controller`
+    - Validate input người dùng trong `controller`. Hàm `controller.register()` có nhiệm vụ chính là validate input và gọi sang `model` để lưu thông tin người dùng nếu thông tin hợp lệ
 
       <pre>
         <code>
@@ -329,7 +222,7 @@
         </code>
       </pre>
 
-      - Refactor lại hàm `controller.register()`:
+      - Refactor lại hàm `controller.register()` để gọi sang `view.setMessage()`:
 
       <pre>
         <code>
@@ -367,20 +260,168 @@
         </code>
       </pre>
 
-    - Update HTML, CSS để hiển thị kết quả validate input
-      - Thêm thẻ `div.error` với id tương ứng vào ngay bên dưới mỗi thẻ input
+    - Update HTML để hiển thị kết quả validate input bằng cách thêm thẻ `div.error` với id tương ứng vào ngay bên dưới mỗi thẻ input
 
-      ```html
-        <div id='firstName-error' class='error'></div>
+      ```js
+        components.register = `
+          ...
+  
+          <div class='name-wrapper'>
+            <div class='input-wrapper'>
+              <input class='input' type="text" name="firstName" placeholder="First name" />
+              <div id='firstName-error' class='error'></div>
+            </div>
+            <div class='input-wrapper'>
+              <input class='input' type="text" name="lastName" placeholder="Last name" />
+              <div id='lastName-error' class='error'></div>
+            </div>
+          </div>
+
+          <div class='input-wrapper'>
+            <input class='input' type="email" name="email" placeholder="Email" />
+            <div id='email-error' class='error'></div>
+          </div>
+
+          <div class='input-wrapper'>
+            <input class='input' type="password" name="password" placeholder="Password" />
+            <div id='password-error' class='error'></div>
+          </div>
+
+          <div class='input-wrapper'>
+            <input class='input' type="password" name="confirmPassword" placeholder="Confirm password" />
+            <div id='confirmPassword-error' class='error'></div>
+          </div>
+
+          <div class='input-wrapper register-footer'>
+            <a id='already-have-account'>Already have an account? Login</a>
+            <button class='btn' type='submit'>
+              <span>Register</span>
+            </button>
+          </div>
+          
+          ...
+        `;
       ```
 
-      - Thêm style cho class `.error` trong file `style.css`
 
-      ```css
-        .error {
-          color: #f5222d;
-        }
-      ```
+**IV. Thêm CSS cho trang HTML**
+
+1. Thêm style cho màn hình "Đăng kí"
+- Tạo file `register.css` trong folder `css`, thêm style cho thẻ `div.register-container` và thẻ `div.form-wrapper` như sau:
+
+    ```css
+      .register-container {
+        width: 100%;
+        min-width: 400px;
+        height: 100vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+        background: url("../images/login-background.jpg") no-repeat center center;
+        background-size: cover;
+      }
+
+
+      .register-container .form-wrapper {
+        width: 500px;
+        min-width: 400px;
+        height: 100%;
+        padding: 70px 50px;
+        background-color: #ffffff;
+      }
+
+      .register-container .form-wrapper .logo {
+        width: 100%;
+        display: flex;
+        margin-bottom: 50px;
+        justify-content: center;
+      }
+
+      .register-container .form-wrapper .logo span {
+        font-size: 32px;
+        font-weight: 300;
+        color: #788195;
+      }
+
+      .register-container .form-wrapper .form-container .name-wrapper {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .register-container .form-wrapper .form-container .name-wrapper .input-wrapper {
+        width: 48%;
+      }
+
+      .register-container .form-wrapper .form-container .register-footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .register-container .form-wrapper .form-container .register-footer #already-have-account {
+        cursor: pointer;
+      }
+    ```
+
+    - Thuộc tính `height: 100vh` (vh: view height) đảm bảo `div.register-container` sẽ luôn chiếm toàn bộ chiều dài của sổ trình duyệt
+    - Thuộc tính `justify-content: flex-end` sẽ giữ thẻ `div.form-wrapper` luôn ở bên phải của màn hình
+
+2. Thêm style cho class `.input` và `.error` 
+    - Ở đây, chúng ta muốn tất cả các ô input sẽ có style giống nhau và có thể tái sử dụng ở nhiều màn hình khác nhau, vì vậy các thẻ input đều có class là `.input`. Tương tự với class `.btn` và class `.error`
+
+    - Các style này sẽ được dùng lặp lại ở nhiều màn hình khác nhau nên ta sẽ thêm style cho class `.input`, `.input-wrapper`, `.btn` và `.error` bên trong file `style.css`:
+
+        ```css
+          .input-wrapper {
+            margin-bottom: 15px;
+          }
+
+          .input {
+            height: 42px;
+            padding: 6px 10px;
+            width: 100%;
+            cursor: text;
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #595959;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #e9e9e9;
+            border-radius: 5px;
+          }
+
+          .btn {
+            font-weight: 500;
+            color: #ffffff;
+            background-color: #4482FF;
+            border-color: #4482FF;
+            display: inline-block;
+            margin-bottom: 0;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            line-height: 1.5;
+            padding: 0 25px;
+            font-size: 14px;
+            border-radius: 4px;
+            height: 36px;
+          }
+
+          .error {
+            color: #f5222d;
+          }
+        ```
+
+    - Như vậy, ở bất kì màn hình nào, nếu sử dụng thẻ `<input>` hoặc `<button>`, ta chỉ cần thêm class `.input` hoặc `.btn`
+
+    - Kết quả sau khi thêm CSS:
+
+    ![Màn hình đăng kí 1](/login-register-ui/register-ui.png)
+
+    ![Màn hình đăng kí 2](/login-register-ui/register-ui-validation.png)
+
 
 - **Bài tập:**
     - Làm 1 trang "Đăng nhập" tương tự như trang "Đăng kí" với 2 trường là "Email" và "Password"
