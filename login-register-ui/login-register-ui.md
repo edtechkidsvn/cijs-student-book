@@ -416,6 +416,17 @@
 
     - Như vậy, ở bất kì màn hình nào, nếu sử dụng thẻ `<input>` hoặc `<button>`, ta chỉ cần thêm class `.input` hoặc `.btn`
 
+3. Link 2 file css vừa tạo vào file `index.html`
+
+    ```html
+      <head>
+        ...
+
+        <link rel='stylesheet' type='text/css' href='../css/register.css' />
+        <link rel='stylesheet' type='text/css' href='../css/style.css' />
+      </head>
+    ```
+
     - Kết quả sau khi thêm CSS:
 
     ![Màn hình đăng kí 1](/login-register-ui/register-ui.png)
