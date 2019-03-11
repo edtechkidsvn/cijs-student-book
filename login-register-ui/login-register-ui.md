@@ -226,9 +226,7 @@
             case 'register':
               ...
               <b>const registerForm = document.getElementById('register-form');
-              registerForm.addEventListener('submit', (e) => {
-                
-              });</b>
+              registerForm.addEventListener('submit', (e) => {});</b>
               ...
           }
         };
@@ -243,9 +241,9 @@
           switch (screenName) {
             case 'register':
               ...
-              <b>const registerForm = document.getElementById('register-form');
+              const registerForm = document.getElementById('register-form');
               registerForm.addEventListener('submit', (e) => {
-                e.preventDefault();
+                <b>e.preventDefault();
                 const registerInfo = {
                   firstName: registerForm.firstName.value,
                   lastName: registerForm.lastName.value,
@@ -253,8 +251,8 @@
                   password: registerForm.password.value,
                   confirmPassword: registerForm.confirmPassword.value,
                 };
-                controller.register(registerInfo);
-              });</b>
+                controller.register(registerInfo);</b>
+              });
               ...
           }
         };
