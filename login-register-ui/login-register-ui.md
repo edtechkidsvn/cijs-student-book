@@ -187,11 +187,9 @@
                 document.getElementById('app').innerHTML = components.register;
                 
                 // add register button listeners
-                <b>
-                  document.getElementById('already-have-account').addEventListener('click', () => {
-                    view.setActiveScreen('login');
-                  });
-                </b>
+                <b>document.getElementById('already-have-account').addEventListener('click', () => {
+                  view.setActiveScreen('login');
+                });</b>
                 
                 ...
             }
@@ -227,12 +225,10 @@
           switch (screenName) {
             case 'register':
               ...
-              <b>
-                const registerForm = document.getElementById('register-form');
-                registerForm.addEventListener('submit', (e) => {
-                  
-                });
-              </b>
+              <b>const registerForm = document.getElementById('register-form');
+              registerForm.addEventListener('submit', (e) => {
+                
+              });</b>
               ...
           }
         };
@@ -247,20 +243,18 @@
           switch (screenName) {
             case 'register':
               ...
-              <b>
-                const registerForm = document.getElementById('register-form');
-                registerForm.addEventListener('submit', (e) => {
-                  e.preventDefault();
-                  const registerInfo = {
-                    firstName: registerForm.firstName.value,
-                    lastName: registerForm.lastName.value,
-                    email: registerForm.email.value,
-                    password: registerForm.password.value,
-                    confirmPassword: registerForm.confirmPassword.value,
-                  };
-                  controller.register(registerInfo);
-                });
-              </b>
+              <b>const registerForm = document.getElementById('register-form');
+              registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const registerInfo = {
+                  firstName: registerForm.firstName.value,
+                  lastName: registerForm.lastName.value,
+                  email: registerForm.email.value,
+                  password: registerForm.password.value,
+                  confirmPassword: registerForm.confirmPassword.value,
+                };
+                controller.register(registerInfo);
+              });</b>
               ...
           }
         };
@@ -287,35 +281,33 @@
 
       <pre>
         <code>
-          <b>
-            controller.register = (registerInfo) => {
-              if (!registerInfo.firstName) {
-                document.getElementById('firstName-error').innerText = 'Please input your first name';
-              } else {
-                document.getElementById('firstName-error').innerText = '';
-              }
-              if (!registerInfo.lastName) {
-                document.getElementById('lastName-error').innerText = 'Please input your last name';
-              } else {
-                document.getElementById('lastName-error').innerText = '';
-              }
-              if (!registerInfo.email) {
-                document.getElementById('email-error').innerText = 'Please input your email';
-              } else {
-                document.getElementById('email-error').innerText = '';
-              }
-              if (!registerInfo.password) {
-                document.getElementById('password-error').innerText = 'Please input your password';
-              } else {
-                document.getElementById('password-error').innerText = '';
-              }
-              if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
-                document.getElementById('confirmPassword-error').innerText = 'Confirm password didnt match';
-              } else {
-                document.getElementById('confirmPassword-error').innerText = '';
-              }
-            };
-          </b>
+          <b>controller.register = (registerInfo) => {
+            if (!registerInfo.firstName) {
+              document.getElementById('firstName-error').innerText = 'Please input your first name';
+            } else {
+              document.getElementById('firstName-error').innerText = '';
+            }
+            if (!registerInfo.lastName) {
+              document.getElementById('lastName-error').innerText = 'Please input your last name';
+            } else {
+              document.getElementById('lastName-error').innerText = '';
+            }
+            if (!registerInfo.email) {
+              document.getElementById('email-error').innerText = 'Please input your email';
+            } else {
+              document.getElementById('email-error').innerText = '';
+            }
+            if (!registerInfo.password) {
+              document.getElementById('password-error').innerText = 'Please input your password';
+            } else {
+              document.getElementById('password-error').innerText = '';
+            }
+            if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
+              document.getElementById('confirmPassword-error').innerText = 'Confirm password didnt match';
+            } else {
+              document.getElementById('confirmPassword-error').innerText = '';
+            }
+          };</b>
         </code>
       </pre>
 
@@ -335,35 +327,33 @@
 
       <pre>
         <code>
-          <b>
-            controller.register = (registerInfo) => {
-              if (!registerInfo.firstName) {
-                view.setMessage('firstName-error', 'Please input your first name');
-              } else {
-                view.setMessage('firstName-error', '');
-              }
-              if (!registerInfo.lastName) {
-                view.setMessage('lastName-error', 'Please input your last name');
-              } else {
-                view.setMessage('lastName-error', '');
-              }
-              if (!registerInfo.email) {
-                view.setMessage('email-error', 'Please input your email');
-              } else {
-                view.setMessage('email-error', '');
-              }
-              if (!registerInfo.password) {
-                view.setMessage('password-error', 'Please input your password');
-              } else {
-                view.setMessage('password-error', '');
-              }
-              if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
-                view.setMessage('confirmPassword-error', 'Confirm password didnt match');
-              } else {
-                view.setMessage('confirmPassword-error', '');
-              }
-            };
-          </b>
+          <b>controller.register = (registerInfo) => {
+            if (!registerInfo.firstName) {
+              view.setMessage('firstName-error', 'Please input your first name');
+            } else {
+              view.setMessage('firstName-error', '');
+            }
+            if (!registerInfo.lastName) {
+              view.setMessage('lastName-error', 'Please input your last name');
+            } else {
+              view.setMessage('lastName-error', '');
+            }
+            if (!registerInfo.email) {
+              view.setMessage('email-error', 'Please input your email');
+            } else {
+              view.setMessage('email-error', '');
+            }
+            if (!registerInfo.password) {
+              view.setMessage('password-error', 'Please input your password');
+            } else {
+              view.setMessage('password-error', '');
+            }
+            if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
+              view.setMessage('confirmPassword-error', 'Confirm password didnt match');
+            } else {
+              view.setMessage('confirmPassword-error', '');
+            }
+          };</b>
         </code>
       </pre>
 
