@@ -178,10 +178,19 @@
 - Lắng nghe sự kiện `click` của nút "Already have an account"
     - Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
 
-        ```js
-          // add register button listeners
-          document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));
-        ```
+        <pre>
+          view.setActiveScreen = (screenName) => {
+            switch (screenName) {
+              case 'register':
+                // mount register screen
+                document.getElementById('app').innerHTML = components.register;
+                
+                // add register button listeners
+                <b>document.getElementById('already-have-account').addEventListener('click', () => view.setActiveScreen('login'));</b>
+                ...
+            }
+          };
+        </pre>
 
 - Kết quả:
 
