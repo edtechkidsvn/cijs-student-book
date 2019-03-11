@@ -179,7 +179,7 @@
     - Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
 
         <pre>
-        <code>
+          <code>
           view.setActiveScreen = (screenName) => {
             switch (screenName) {
               case 'register':
@@ -187,14 +187,16 @@
                 document.getElementById('app').innerHTML = components.register;
                 
                 // add register button listeners
-                <b>document.getElementById('already-have-account').addEventListener('click', () => {
-                  view.setActiveScreen('login');
-                });</b>
+                <b>
+                  document.getElementById('already-have-account').addEventListener('click', () => {
+                    view.setActiveScreen('login');
+                  });
+                </b>
                 
                 ...
             }
           };
-        </code>
+          </code>
         </pre>
 
 - Kết quả:
@@ -219,126 +221,151 @@
     - Thực hiện bắt sự kiện submit (Đây là sự kiện khởi đầu quá trình validation)
       - Thêm đoạn code sau vào hàm `view.setActiveScreen()`:
 
-      ```js
-        const registerForm = document.getElementById('register-form');
-
-        registerForm.addEventListener('submit', (e) => {
-          ...
-        });
-      ```
+      <pre>
+        <code>
+        view.setActiveScreen = (screenName) => {
+          switch (screenName) {
+            case 'register':
+              ...
+              <b>
+                const registerForm = document.getElementById('register-form');
+                registerForm.addEventListener('submit', (e) => {
+                  
+                });
+              </b>
+              ...
+          }
+        };
+        </code>
+      </pre>
     
     - Thực hiện lấy input người dùng từ form và validate input người dùng bằng cách truyền thông tin qua hàm `controller.register()`
 
-      ```js
-        const registerForm = document.getElementById('register-form');
-
-        registerForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          const registerInfo = {
-            firstName: registerForm.firstName.value,
-            lastName: registerForm.lastName.value,
-            email: registerForm.email.value,
-            password: registerForm.password.value,
-            confirmPassword: registerForm.confirmPassword.value,
-          };
-
-
-          controller.register(registerInfo);
-        });
-      ```
+      <pre>
+        <code>
+        view.setActiveScreen = (screenName) => {
+          switch (screenName) {
+            case 'register':
+              ...
+              <b>
+                const registerForm = document.getElementById('register-form');
+                registerForm.addEventListener('submit', (e) => {
+                  e.preventDefault();
+                  const registerInfo = {
+                    firstName: registerForm.firstName.value,
+                    lastName: registerForm.lastName.value,
+                    email: registerForm.email.value,
+                    password: registerForm.password.value,
+                    confirmPassword: registerForm.confirmPassword.value,
+                  };
+                  controller.register(registerInfo);
+                });
+              </b>
+              ...
+          }
+        };
+        </code>
+      </pre>
 
     - Validate input người dùng trong `controller`
 
-      ```js
-        controller.register = (registerInfo) => {
-          if (!registerInfo.firstName) {
-            document.getElementById('firstName-error').innerText = 'Please input your first name';
-          } else {
-            document.getElementById('firstName-error').innerText = '';
-          }
-        };
-      ```
+      <pre>
+        <code>
+          <b>
+            controller.register = (registerInfo) => {
+              if (!registerInfo.firstName) {
+                document.getElementById('firstName-error').innerText = 'Please input your first name';
+              } else {
+                document.getElementById('firstName-error').innerText = '';
+              }
+            };
+          </b>
+        </code>
+      </pre>
 
-      - Ở đây param `registerInfo` truyền vào sẽ có dạng 1 `object`. Nếu không chúng ta sẽ sử dụng thuộc tính `innerText` để set nội dung của thẻ `div#firstName-error` thành một thông báo yêu cầu nhập "First name". Tương tự với các trường còn lại trong form đăng kí:
+      - Ở đây param `registerInfo` truyền vào sẽ có dạng 1 `object`. Nếu không có thông tin `firstName` chúng ta sẽ sử dụng thuộc tính `innerText` để set nội dung của thẻ `div#firstName-error` thành một thông báo yêu cầu nhập "First name". Tương tự với các trường còn lại trong form đăng kí:
 
-      ```js
-        controller.register = (registerInfo) => {
-          if (!registerInfo.firstName) {
-            document.getElementById('firstName-error').innerText = 'Please input your first name';
-          } else {
-            document.getElementById('firstName-error').innerText = '';
-          }
-
-          if (!registerInfo.lastName) {
-            document.getElementById('lastName-error').innerText = 'Please input your last name';
-          } else {
-            document.getElementById('lastName-error').innerText = '';
-          }
-
-          if (!registerInfo.email) {
-            document.getElementById('email-error').innerText = 'Please input your email';
-          } else {
-            document.getElementById('email-error').innerText = '';
-          }
-
-          if (!registerInfo.password) {
-            document.getElementById('password-error').innerText = 'Please input your password';
-          } else {
-            document.getElementById('password-error').innerText = '';
-          }
-
-          if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
-            document.getElementById('confirmPassword-error').innerText = 'Confirm password didnt match';
-          } else {
-            document.getElementById('confirmPassword-error').innerText = '';
-          }
-        };
-      ```
+      <pre>
+        <code>
+          <b>
+            controller.register = (registerInfo) => {
+              if (!registerInfo.firstName) {
+                document.getElementById('firstName-error').innerText = 'Please input your first name';
+              } else {
+                document.getElementById('firstName-error').innerText = '';
+              }
+              if (!registerInfo.lastName) {
+                document.getElementById('lastName-error').innerText = 'Please input your last name';
+              } else {
+                document.getElementById('lastName-error').innerText = '';
+              }
+              if (!registerInfo.email) {
+                document.getElementById('email-error').innerText = 'Please input your email';
+              } else {
+                document.getElementById('email-error').innerText = '';
+              }
+              if (!registerInfo.password) {
+                document.getElementById('password-error').innerText = 'Please input your password';
+              } else {
+                document.getElementById('password-error').innerText = '';
+              }
+              if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
+                document.getElementById('confirmPassword-error').innerText = 'Confirm password didnt match';
+              } else {
+                document.getElementById('confirmPassword-error').innerText = '';
+              }
+            };
+          </b>
+        </code>
+      </pre>
 
       - Nhận thấy ở đây, việc sử dụng hàm `getElementById().innerText` được lặp lại khá nhiều, thêm nữa công việc thay đổi giao diện người dùng là nhiệm vụ của `view` (mô hình MVC), vì vậy chúng ta sẽ viết 1 hàm `setMessage()` trong file `view.js` để sử dụng chung:
 
-      ```js
-        view.setMessage = (elementId, message = '') => {
-          document.getElementById(elementId).innerText = message;
-        }
-      ```
+      <pre>
+        <code>
+          <b>
+            view.setMessage = (elementId, message = '') => {
+              document.getElementById(elementId).innerText = message;
+            }
+          </b>
+        </code>
+      </pre>
 
       - Refactor lại hàm `controller.register()`:
-      
-      ```js
-        controller.register = (registerInfo) => {
-          if (!registerInfo.firstName) {
-            view.setMessage('firstName-error', 'Please input your first name');
-          } else {
-            view.setMessage('firstName-error', '');
-          }
 
-          if (!registerInfo.lastName) {
-            view.setMessage('lastName-error', 'Please input your last name');
-          } else {
-            view.setMessage('lastName-error', '');
-          }
-
-          if (!registerInfo.email) {
-            view.setMessage('email-error', 'Please input your email');
-          } else {
-            view.setMessage('email-error', '');
-          }
-
-          if (!registerInfo.password) {
-            view.setMessage('password-error', 'Please input your password');
-          } else {
-            view.setMessage('password-error', '');
-          }
-
-          if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
-            view.setMessage('confirmPassword-error', 'Confirm password didnt match');
-          } else {
-            view.setMessage('confirmPassword-error', '');
-          }
-        };
-      ```
+      <pre>
+        <code>
+          <b>
+            controller.register = (registerInfo) => {
+              if (!registerInfo.firstName) {
+                view.setMessage('firstName-error', 'Please input your first name');
+              } else {
+                view.setMessage('firstName-error', '');
+              }
+              if (!registerInfo.lastName) {
+                view.setMessage('lastName-error', 'Please input your last name');
+              } else {
+                view.setMessage('lastName-error', '');
+              }
+              if (!registerInfo.email) {
+                view.setMessage('email-error', 'Please input your email');
+              } else {
+                view.setMessage('email-error', '');
+              }
+              if (!registerInfo.password) {
+                view.setMessage('password-error', 'Please input your password');
+              } else {
+                view.setMessage('password-error', '');
+              }
+              if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
+                view.setMessage('confirmPassword-error', 'Confirm password didnt match');
+              } else {
+                view.setMessage('confirmPassword-error', '');
+              }
+            };
+          </b>
+        </code>
+      </pre>
 
     - Update HTML, CSS để hiển thị kết quả validate input
       - Thêm thẻ `div.error` với id tương ứng vào ngay bên dưới mỗi thẻ input
