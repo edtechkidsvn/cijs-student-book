@@ -190,7 +190,7 @@
                 <b>document.getElementById('already-have-account').addEventListener('click', () => {
                   view.setActiveScreen('login');
                 });</b>
-                
+                <br/>
                 ...
             }
           };
@@ -245,14 +245,16 @@
               ...
               const registerForm = document.getElementById('register-form');
               registerForm.addEventListener('submit', (e) => {
-                <b>e.preventDefault();<br/>
+                <b>e.preventDefault();
+                <br/>
                 const registerInfo = {
                   firstName: registerForm.firstName.value,
                   lastName: registerForm.lastName.value,
                   email: registerForm.email.value,
                   password: registerForm.password.value,
                   confirmPassword: registerForm.confirmPassword.value,
-                };<br/>
+                };
+                <br/>
                 controller.register(registerInfo);
               });
               ...
@@ -286,22 +288,26 @@
               document.getElementById('firstName-error').innerText = 'Please input your first name';
             } else {
               document.getElementById('firstName-error').innerText = '';
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.lastName) {
               document.getElementById('lastName-error').innerText = 'Please input your last name';
             } else {
               document.getElementById('lastName-error').innerText = '';
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.email) {
               document.getElementById('email-error').innerText = 'Please input your email';
             } else {
               document.getElementById('email-error').innerText = '';
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.password) {
               document.getElementById('password-error').innerText = 'Please input your password';
             } else {
               document.getElementById('password-error').innerText = '';
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
               document.getElementById('confirmPassword-error').innerText = 'Confirm password didnt match';
             } else {
@@ -332,22 +338,26 @@
               view.setMessage('firstName-error', 'Please input your first name');
             } else {
               view.setMessage('firstName-error', '');
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.lastName) {
               view.setMessage('lastName-error', 'Please input your last name');
             } else {
               view.setMessage('lastName-error', '');
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.email) {
               view.setMessage('email-error', 'Please input your email');
             } else {
               view.setMessage('email-error', '');
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.password) {
               view.setMessage('password-error', 'Please input your password');
             } else {
               view.setMessage('password-error', '');
-            }<br/>
+            }
+            <br/>
             if (!registerInfo.confirmPassword || registerInfo.confirmPassword !== registerInfo.password) {
               view.setMessage('confirmPassword-error', 'Confirm password didnt match');
             } else {
